@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title -->
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="PluginTemplate" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="5"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Bugfixes" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="5"/>
 
         <!-- Enabled -->
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Enabled" VerticalAlignment="Center" Margin="5"/>
