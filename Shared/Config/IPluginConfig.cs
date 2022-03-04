@@ -6,7 +6,10 @@ namespace Shared.Config
     {
         // Enables the plugin
         bool Enabled { get; set; }
+        /*BOOL_OPTION
 
-        // TODO: Add config properties here, then extend the implementing classes accordingly
+        // Option tooltip
+        bool OptionName { get; set; }
+        BOOL_OPTION*/
     }
 }

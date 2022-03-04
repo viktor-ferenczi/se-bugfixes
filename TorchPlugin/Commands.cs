@@ -20,7 +20,7 @@ namespace TorchPlugin
         {
             var config = Plugin.Instance.Config;
             Respond($"{Plugin.PluginName} plugin is enabled: {Format(config.Enabled)}");
-            // TODO: Respond with your current configuration values
+            //BOOL_OPTION Respond($"option_name: {Format(config.OptionName)}");
         }
 
         // Custom formatters
@@ -80,6 +80,33 @@ namespace TorchPlugin
             RespondWithInfo();
         }
 
-        // TODO: Add your commands here
+        // ReSharper disable once UnusedMember.Global
+        [Command("fix", "Enables or disables a fix")]
+        [Permission(MyPromoteLevel.Admin)]
+        public void Fix(string name, string flag)
+        {
+            if (!TryParseBool(flag, out var parsedFlag))
+            {
+                Respond($"Invalid boolean value: {flag}");
+                return;
+            }
+
+            switch (name)
+            {
+                /*BOOL_OPTION
+                case "option_name":
+                    Config.OptionName = parsedFlag;
+                    break;
+
+                BOOL_OPTION*/
+                default:
+                    Respond($"Unknown fix: {name}");
+                    Respond($"Valid fix names:");
+                    //BOOL_OPTION Respond($"  option_name");
+                    return;
+            }
+
+            RespondWithInfo();
+        }
     }
 }

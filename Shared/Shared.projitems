@@ -20,6 +20,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Plugin\ICommonPlugin.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)..\CodeGenerator.py">
+      <Link>CodeGenerator.py</Link>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)..\Edit-and-run-before-opening-solution.bat">
       <Link>Edit-and-run-before-opening-solution.bat</Link>
     </Content>

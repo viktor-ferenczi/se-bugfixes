@@ -9,7 +9,7 @@ namespace TorchPlugin
     public class PluginConfig : ViewModel, IPluginConfig
     {
         private bool enabled = true;
-        // TODO: Implement your config fields
+        //BOOL_OPTION private bool optionName = false;
 
         [Display(GroupName = "General", Name = "Enable plugin", Order = 1, Description = "Enables/disables the plugin")]
         public bool Enabled
@@ -17,7 +17,14 @@ namespace TorchPlugin
             get => enabled;
             set => SetValue(ref enabled, value);
         }
+        /*BOOL_OPTION
 
-        // TODO: Encapsulate them as properties
+        [Display(Order = 8, GroupName = "Fixes", Name = "Option label", Description = "Option tooltip")]
+        public bool OptionName
+        {
+            get => optionName;
+            set => SetValue(ref optionName, value);
+        }
+        BOOL_OPTION*/
     }
 }

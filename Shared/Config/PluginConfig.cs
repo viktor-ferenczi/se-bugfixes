@@ -30,15 +30,21 @@ namespace Shared.Config
         }
 
         private bool enabled = true;
-        // TODO: Implement your config fields
+        //BOOL_OPTION private bool optionName = true;
 
         public bool Enabled
         {
             get => enabled;
             set => SetValue(ref enabled, value);
         }
+        /*BOOL_OPTION
 
-        // TODO: Encapsulate them as properties
+        public bool OptionName
+        {
+            get => optionName;
+            set => SetValue(ref optionName, value);
+        }
+        BOOL_OPTION*/
     }
 }
 

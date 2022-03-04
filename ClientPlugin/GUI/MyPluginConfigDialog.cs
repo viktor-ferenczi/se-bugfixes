@@ -20,8 +20,11 @@ namespace ClientPlugin.GUI
         private MyGuiControlLabel enabledLabel;
         private MyGuiControlCheckbox enabledCheckbox;
 
-        // TODO: Add member variables for your UI controls here
+        /*BOOL_OPTION
+        private MyGuiControlLabel optionNameLabel;
+        private MyGuiControlCheckbox optionNameCheckbox;
 
+        BOOL_OPTION*/
         private MyGuiControlMultilineText infoText;
         private MyGuiControlButton closeButton;
 
@@ -55,7 +58,11 @@ namespace ClientPlugin.GUI
 
             var config = Common.Config;
             CreateCheckbox(out enabledLabel, out enabledCheckbox, config.Enabled, value => config.Enabled = value, "Enabled", "Enables the plugin");
-            // TODO: Create your UI controls here
+            //BOOL_OPTION CreateCheckbox(out optionNameLabel, out optionNameCheckbox, config.OptionName, value => config.OptionName = value, "Option label", "Option tooltip");
+
+            EnableDisableFixes();
+
+            enabledCheckbox.IsCheckedChanged += EnableDisableFixes;
 
             infoText = new MyGuiControlMultilineText
             {
@@ -63,8 +70,7 @@ namespace ClientPlugin.GUI
                 OriginAlign = MyGuiDrawAlignEnum.HORISONTAL_CENTER_AND_VERTICAL_TOP,
                 TextAlign = MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP,
                 TextBoxAlign = MyGuiDrawAlignEnum.HORISONTAL_LEFT_AND_VERTICAL_TOP,
-                // TODO: Add 2 short lines of text here if the player needs to know something. Ask for feedback here. Etc.
-                Text = new StringBuilder("\r\nTODO")
+                Text = new StringBuilder("\r\nIt is safe to change these options during the game.\r\nPlease send me feedback on the SE Mods Discord\r\nwhether they worked out. Thanks!")
             };
 
             closeButton = new MyGuiControlButton(originAlign: MyGuiDrawAlignEnum.HORISONTAL_RIGHT_AND_VERTICAL_CENTER, text: MyTexts.Get(MyCommonTexts.Ok), onButtonClick: OnOk);
@@ -89,13 +95,19 @@ namespace ClientPlugin.GUI
             checkboxControl.IsCheckedChanged += cb => store(cb.IsChecked);
         }
 
+        private void EnableDisableFixes(MyGuiControlCheckbox _ = null)
+        {
+            var enabled = enabledCheckbox.IsChecked;
+
+            //BOOL_OPTION optionNameCheckbox.Enabled = enabled;
+        }
+
         private void LayoutControls()
         {
             var size = Size ?? Vector2.One;
-            layoutTable = new MyLayoutTable(this, -0.3f * size, 0.6f * size);
+            layoutTable = new MyLayoutTable(this, new Vector2(-0.3f * size.X, -0.375f * size.Y), new Vector2(0.6f * size.X, 0.8f * size.Y));
             layoutTable.SetColumnWidths(400f, 100f);
-            // TODO: Add more row heights here as needed
-            layoutTable.SetRowHeights(90f, /* TODO */ 150f, 60f);
+            layoutTable.SetRowHeights(80f, 50f,/*BOOL_OPTION 50f,BOOL_OPTION*/ 150f, 50f);
 
             var row = 0;
 
@@ -103,8 +115,12 @@ namespace ClientPlugin.GUI
             layoutTable.Add(enabledCheckbox, MyAlignH.Left, MyAlignV.Center, row, 1);
             row++;
 
-            // TODO: Layout your UI controls here
+            /*BOOL_OPTION
+            layoutTable.Add(optionNameLabel, MyAlignH.Left, MyAlignV.Center, row, 0);
+            layoutTable.Add(optionNameCheckbox, MyAlignH.Left, MyAlignV.Center, row, 1);
+            row++;
 
+            BOOL_OPTION*/
             layoutTable.Add(infoText, MyAlignH.Left, MyAlignV.Top, row, 0, colSpan: 2);
             row++;
 
