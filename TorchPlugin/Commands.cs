@@ -20,6 +20,7 @@ namespace TorchPlugin
             var config = Plugin.Instance.Config;
             Respond($"Bugfixes plugin is enabled: {Format(config.Enabled)}");
             Respond($"turret_nan: {Format(config.TurretNan)}");
+Respond($"ai_crash: {Format(config.AiCrash)}");
 //BOOL_OPTION Respond($"option_name: {Format(config.OptionName)}");
         }
 
@@ -69,6 +70,10 @@ namespace TorchPlugin
                     Config.TurretNan = parsedFlag;
                     break;
 
+                case "ai_crash":
+                    Config.AiCrash = parsedFlag;
+                    break;
+
                 /*BOOL_OPTION
                 case "option_name":
                     Config.OptionName = parsedFlag;
@@ -80,6 +85,7 @@ namespace TorchPlugin
                     Respond($"Valid fix names:");
                     Respond($"  laser_antenna");
                     Respond($"  turret_nan");
+Respond($"  ai_crash");
 //BOOL_OPTION Respond($"  option_name");
                     return;
             }

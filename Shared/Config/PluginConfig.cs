@@ -31,6 +31,7 @@ namespace Shared.Config
 
         private bool enabled = true;
         private bool turretNan = true;
+private bool aiCrash = true;
 //BOOL_OPTION private bool optionName = true;
 
         public bool Enabled
@@ -43,6 +44,11 @@ namespace Shared.Config
         {
             get => turretNan;
             set => SetValue(ref turretNan, value);
+        }
+        public bool AiCrash
+        {
+            get => aiCrash;
+            set => SetValue(ref aiCrash, value);
         }
         /*BOOL_OPTION
 

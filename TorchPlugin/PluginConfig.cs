@@ -10,6 +10,7 @@ namespace TorchPlugin
     {
         private bool enabled = true;
         private bool turretNan = true;
+private bool aiCrash = true;
 //BOOL_OPTION private bool optionName = true;
 
         [Display(Order = 1, GroupName = "General", Name = "Enable plugin", Description = "Enables/disables the plugin")]
@@ -24,6 +25,12 @@ namespace TorchPlugin
         {
             get => turretNan;
             set => SetValue(ref turretNan, value);
+        }
+        [Display(Order = 3, GroupName = "Fixes", Name = "Fix crash in AI blocks", Description = "Fix crash in AI blocks (Automaton)")]
+        public bool AiCrash
+        {
+            get => aiCrash;
+            set => SetValue(ref aiCrash, value);
         }
         /*BOOL_OPTION
 
