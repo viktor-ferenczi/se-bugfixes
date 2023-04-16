@@ -9,6 +9,7 @@ namespace TorchPlugin
     public class PluginConfig : ViewModel, IPluginConfig
     {
         private bool enabled = true;
+        private bool laserAntenna = false;
         //BOOL_OPTION private bool optionName = false;
 
         [Display(GroupName = "General", Name = "Enable plugin", Order = 1, Description = "Enables/disables the plugin")]
@@ -16,6 +17,12 @@ namespace TorchPlugin
         {
             get => enabled;
             set => SetValue(ref enabled, value);
+        }
+        [Display(Order = 8, GroupName = "Fixes", Name = "Fix laser antenna", Description = "Fixes laser antenna connectivity issues")]
+        public bool LaserAntenna
+        {
+            get => laserAntenna;
+            set => SetValue(ref laserAntenna, value);
         }
         /*BOOL_OPTION
 

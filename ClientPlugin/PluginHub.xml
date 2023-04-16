@@ -1,23 +1,19 @@
 <?xml version="1.0"?>
 <PluginData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="GitHubPlugin">
-  <Id>TODO: github-user/project-name</Id>
-  <GroupId>TODO: github-user/project-name</GroupId>
-  <FriendlyName>TODO: Bugfixes</FriendlyName>
-  <Author>TODO: Author Name</Author>
+  <Id>viktor-ferenczi/se-bugfixes</Id>
+  <GroupId>viktor-ferenczi/se-bugfixes</GroupId>
+  <FriendlyName>Bugfixes</FriendlyName>
+  <Author>Viktor Ferenczi</Author>
   <Commit>TODO: Git commit hash</Commit>
   <SourceDirectories>
     <Directory>Shared</Directory>
     <Directory>ClientPlugin</Directory>
   </SourceDirectories>
-  <Tooltip>TODO: Short description</Tooltip>
-  <Description>TODO: Long description, multiple lines.
+  <Tooltip>Various bugfixes</Tooltip>
+  <Description>Various bugfixes for SE client and server:
 
-FriendlyName: How your plugin will show up in the Plugins list.
+- Hiding voxel deformations outside sync distance 
+  Fixes https://support.keenswh.com/spaceengineers/pc/topic/relatively-small-voxel-deformations-on-planets-are-visible-from-long-distances
 
-This text is shown on the right side in the plugin details panel in a scrollable text box.
-
-You can use links here, players can click on them! For example add a Discord invite.
-
-Don't touch the SourceDirectories, unless you rename or consolidate your projects inside the solution.
   </Description>
 </PluginData>

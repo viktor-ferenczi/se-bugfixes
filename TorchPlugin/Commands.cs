@@ -6,7 +6,6 @@ using VRage.Game.ModAPI;
 
 namespace TorchPlugin
 {
-    [Category(Plugin.PluginName)]
     public class Commands : CommandModule
     {
         private static IPluginConfig Config => Common.Config;
@@ -19,14 +18,75 @@ namespace TorchPlugin
         private void RespondWithInfo()
         {
             var config = Plugin.Instance.Config;
-            Respond($"{Plugin.PluginName} plugin is enabled: {Format(config.Enabled)}");
+            Respond($"Bugfixes plugin is enabled: {Format(config.Enabled)}");
+            Respond($"laser_antenna: {Format(config.LaserAntenna)}");
             //BOOL_OPTION Respond($"option_name: {Format(config.OptionName)}");
         }
 
         // Custom formatters
         private static string Format(bool value) => value ? "Yes" : "No";
 
-        // Custom parsers
+        // ReSharper disable once UnusedMember.Global
+        [Command("Bugfixes info", "Bugfixes: Prints the current settings")]
+        [Permission(MyPromoteLevel.None)]
+        public void Info()
+        {
+            RespondWithInfo();
+        }
+
+        // ReSharper disable once UnusedMember.Global
+        [Command("Bugfixes enable", "Bugfixes: Enables the plugin")]
+        [Permission(MyPromoteLevel.Admin)]
+        public void Enable()
+        {
+            Config.Enabled = true;
+            RespondWithInfo();
+        }
+
+        // ReSharper disable once UnusedMember.Global
+        [Command("Bugfixes disable", "Bugfixes: Disables the plugin")]
+        [Permission(MyPromoteLevel.Admin)]
+        public void Disable()
+        {
+            Config.Enabled = false;
+            RespondWithInfo();
+        }
+
+        // ReSharper disable once UnusedMember.Global
+        [Command("fix", "Enables or disables a fix")]
+        [Permission(MyPromoteLevel.Admin)]
+        public void Fix(string name, string flag)
+        {
+            if (!TryParseBool(flag, out var parsedFlag))
+            {
+                Respond($"Invalid boolean value: {flag}");
+                return;
+            }
+
+            switch (name)
+            {
+                case "laser_antenna":
+                    Config.LaserAntenna = parsedFlag;
+                    break;
+
+                /*BOOL_OPTION
+                case "option_name":
+                    Config.OptionName = parsedFlag;
+                    break;
+
+                BOOL_OPTION*/
+                default:
+                    Respond($"Unknown fix: {name}");
+                    Respond($"Valid fix names:");
+                    Respond($"  laser_antenna");
+                    //BOOL_OPTION Respond($"  option_name");
+                    return;
+            }
+
+            RespondWithInfo();
+        }
+        
+        // Helper methods
         private static bool TryParseBool(string text, out bool result)
         {
             switch (text.ToLower())
@@ -52,61 +112,6 @@ namespace TorchPlugin
 
             result = false;
             return false;
-        }
-
-        // ReSharper disable once UnusedMember.Global
-        [Command("info", "Prints the current settings")]
-        [Permission(MyPromoteLevel.None)]
-        public void Info()
-        {
-            RespondWithInfo();
-        }
-
-        // ReSharper disable once UnusedMember.Global
-        [Command("enable", "Enables the plugin")]
-        [Permission(MyPromoteLevel.Admin)]
-        public void Enable()
-        {
-            Config.Enabled = true;
-            RespondWithInfo();
-        }
-
-        // ReSharper disable once UnusedMember.Global
-        [Command("disable", "Disables the plugin")]
-        [Permission(MyPromoteLevel.Admin)]
-        public void Disable()
-        {
-            Config.Enabled = false;
-            RespondWithInfo();
-        }
-
-        // ReSharper disable once UnusedMember.Global
-        [Command("fix", "Enables or disables a fix")]
-        [Permission(MyPromoteLevel.Admin)]
-        public void Fix(string name, string flag)
-        {
-            if (!TryParseBool(flag, out var parsedFlag))
-            {
-                Respond($"Invalid boolean value: {flag}");
-                return;
-            }
-
-            switch (name)
-            {
-                /*BOOL_OPTION
-                case "option_name":
-                    Config.OptionName = parsedFlag;
-                    break;
-
-                BOOL_OPTION*/
-                default:
-                    Respond($"Unknown fix: {name}");
-                    Respond($"Valid fix names:");
-                    //BOOL_OPTION Respond($"  option_name");
-                    return;
-            }
-
-            RespondWithInfo();
         }
     }
 }

@@ -20,6 +20,9 @@ namespace ClientPlugin.GUI
         private MyGuiControlLabel enabledLabel;
         private MyGuiControlCheckbox enabledCheckbox;
 
+        private MyGuiControlLabel laserAntennaLabel;
+        private MyGuiControlCheckbox laserAntennaCheckbox;
+
         /*BOOL_OPTION
         private MyGuiControlLabel optionNameLabel;
         private MyGuiControlCheckbox optionNameCheckbox;
@@ -58,6 +61,7 @@ namespace ClientPlugin.GUI
 
             var config = Common.Config;
             CreateCheckbox(out enabledLabel, out enabledCheckbox, config.Enabled, value => config.Enabled = value, "Enabled", "Enables the plugin");
+            CreateCheckbox(out laserAntennaLabel, out laserAntennaCheckbox, config.LaserAntenna, value => config.LaserAntenna = value, "Fix laser antenna", "Fixes laser antenna connectivity issues");
             //BOOL_OPTION CreateCheckbox(out optionNameLabel, out optionNameCheckbox, config.OptionName, value => config.OptionName = value, "Option label", "Option tooltip");
 
             EnableDisableFixes();
@@ -99,6 +103,7 @@ namespace ClientPlugin.GUI
         {
             var enabled = enabledCheckbox.IsChecked;
 
+            laserAntennaCheckbox.Enabled = enabled;
             //BOOL_OPTION optionNameCheckbox.Enabled = enabled;
         }
 
@@ -113,6 +118,10 @@ namespace ClientPlugin.GUI
 
             layoutTable.Add(enabledLabel, MyAlignH.Left, MyAlignV.Center, row, 0);
             layoutTable.Add(enabledCheckbox, MyAlignH.Left, MyAlignV.Center, row, 1);
+            row++;
+
+            layoutTable.Add(laserAntennaLabel, MyAlignH.Left, MyAlignV.Center, row, 0);
+            layoutTable.Add(laserAntennaCheckbox, MyAlignH.Left, MyAlignV.Center, row, 1);
             row++;
 
             /*BOOL_OPTION
