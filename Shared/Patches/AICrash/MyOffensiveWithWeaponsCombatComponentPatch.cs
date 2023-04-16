@@ -1,3 +1,6 @@
+// NullReferenceException in MyOffensiveWithWeaponsCombatComponent
+// https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent
+
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
