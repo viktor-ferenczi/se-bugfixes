@@ -35,34 +35,56 @@ these patches are expected to be removed anyway, so I did not bother using Torch
 
 ## Credits
 
+*In alphabetical order*
+
 ### Patreon
 
 #### Admiral level supporters
 - BetaMark
-- Casinost
-- wafoxxx
-- Dorimanx
 - Bishbash777
+- Casinost
+- Dorimanx
+- wafoxxx
 
 #### Captain level supporters
-- Lotan
-- ransomthetoaster
-- Lazul
-- mkaito
 - DontFollowOrders
 - Gabor
+- Lazul
+- Lotan
+- mkaito
+- ransomthetoaster
 
 ### Developers
-- TBD
+- zznty
 
 ### Testers
-- TBD
+- Dorimanx
+- zznty
 
 ## Technical details
 
 ### Crash due to NaN value in MyTurretControlBlock
 
-Log: `ArithmeticException: Function does not accept floating point Not-a-Number values`
+Config: `TurretNan`
+
+Log:
+```
+ArithmeticException: Function does not accept floating point Not-a-Number values
+```
 
 [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values)
 [RCA and Repro](https://github.com/viktor-ferenczi/LookAtNanRepro)
+
+### Crash on docking/undocking grids with offensive AI blocks
+
+Config: `AiCrash`
+
+Log:
+```
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SpaceEngineers.Game.EntityComponents.Blocks.MyOffensiveWithWeaponsCombatComponent.OnConnectionChangeCompleted(MyCubeGrid arg1, GridLinkTypeEnum arg2)
+```
+
+Reported, root caused and patched by `zznty`. Thanks!
+
+[Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)
