@@ -3,6 +3,7 @@
 // https://github.com/viktor-ferenczi/LookAtNanRepro
 
 using System;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using HarmonyLib;
@@ -23,6 +24,12 @@ namespace Shared.Patches
         private static bool enabled;
 
         public static void Configure()
+        {
+            enabled = Config.Enabled && Config.TurretNan;
+            Config.PropertyChanged += OnConfigChanged;
+        }
+        
+        private static void OnConfigChanged(object sender, PropertyChangedEventArgs e)
         {
             enabled = Config.Enabled && Config.TurretNan;
         }

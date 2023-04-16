@@ -133,7 +133,7 @@ def main():
     # generate_bool_option('TurretNan', 'turret_nan', 'Fix NaN crash in TurretControlBlock', 'Fixes crash due to NaN value in TurretControlBlock')
 
     # https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values
-    # generate_bool_option('AiCrash', 'ai_crash', 'Fix crash in AI blocks', 'Fix crash in AI blocks (Automaton)')
+    # generate_bool_option('AiCrash', 'ai_crash', 'Fix crash in AI blocks', 'Fix crash in AI (Automaton) blocks (requires restart)')
 
 
 if __name__ == '__main__':
