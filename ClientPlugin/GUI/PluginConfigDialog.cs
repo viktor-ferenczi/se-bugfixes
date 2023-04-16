@@ -64,7 +64,7 @@ namespace ClientPlugin.GUI
             var config = Common.Config;
             CreateCheckbox(out enabledLabel, out enabledCheckbox, config.Enabled, value => config.Enabled = value, "Enabled", "Enables the plugin");
             CreateCheckbox(out turretNanLabel, out turretNanCheckbox, config.TurretNan, value => config.TurretNan = value, "Fix NaN crash in TurretControlBlock", "Fixes crash due to NaN value in TurretControlBlock");
-            CreateCheckbox(out aiCrashLabel, out aiCrashCheckbox, config.AiCrash, value => config.AiCrash = value, "Fix crash in AI blocks", "Fix crash in AI (Automaton) blocks (requires restart)");
+            CreateCheckbox(out aiCrashLabel, out aiCrashCheckbox, config.AiCrash, value => config.AiCrash = value, "Fix crash in AI blocks", "Fixes crash in AI (Automaton) blocks (requires restart)");
 //BOOL_OPTION CreateCheckbox(out optionNameLabel, out optionNameCheckbox, config.OptionName, value => config.OptionName = value, "Option label", "Option tooltip");
 
             EnableDisableFixes();

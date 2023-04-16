@@ -34,7 +34,7 @@ private bool aiCrash = true;
             get => turretNan;
             set => SetValue(ref turretNan, value);
         }
-        [Display(Order = 4, GroupName = "Fixes", Name = "Fix crash in AI blocks", Description = "Fix crash in AI (Automaton) blocks (requires restart)")]
+        [Display(Order = 4, GroupName = "Fixes", Name = "Fix crash in AI blocks", Description = "Fixes crash in AI (Automaton) blocks (requires restart)")]
         public bool AiCrash
         {
             get => aiCrash;

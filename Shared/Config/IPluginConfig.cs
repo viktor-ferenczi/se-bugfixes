@@ -13,7 +13,7 @@ namespace Shared.Config
         // Fixes crash due to NaN value in TurretControlBlock
         bool TurretNan { get; set; }
         
-        // Fix crash in AI (Automaton) blocks (requires restart)
+        // Fixes crash in AI (Automaton) blocks (requires restart)
         bool AiCrash { get; set; }
         /*BOOL_OPTION
 
