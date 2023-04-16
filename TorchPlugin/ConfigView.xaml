@@ -49,6 +49,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <!--BOOL_OPTION
             <RowDefinition Height="Auto" />
             BOOL_OPTION-->
@@ -62,6 +63,9 @@
         <CheckBox Grid.Row="2" Grid.Column="0" Name="TurretNan" IsChecked="{Binding TurretNan}" Margin="5"/>
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Fixes crash due to NaN value in TurretControlBlock" VerticalAlignment="Center" Margin="5"/>
 
+        <CheckBox Grid.Row="3" Grid.Column="0" Name="AiCrash" IsChecked="{Binding AiCrash}" Margin="5"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="Fixes crash in AI (Automaton) blocks (requires restart)" VerticalAlignment="Center" Margin="5"/>
+
         <!--BOOL_OPTION
         <CheckBox Grid.Row="3" Grid.Column="0" Name="OptionName" IsChecked="{Binding OptionName}" Margin="5"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Text="Option tooltip" VerticalAlignment="Center" Margin="5"/>
@@ -74,7 +78,7 @@
         <TextBlock Grid.Row="24" Grid.Column="1" Text="!bug fix name bool" VerticalAlignment="Center" Margin="5" />
 
         <TextBlock Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2" Text="Available names: turret_nan" VerticalAlignment="Center" Margin="5" />
-        <!-- Append these: {BOOL_OPTION}, option_name{/BOOL_OPTION} -->
+        <!-- Append these: , ai_crash{BOOL_OPTION}, option_name{/BOOL_OPTION} -->
 
         <TextBlock Grid.Row="26" Grid.Column="0" Grid.ColumnSpan="2" Text="Accepted bool values:" VerticalAlignment="Center" Margin="5" />
         <TextBlock Grid.Row="27" Grid.Column="1" Text="False: 0 off no n false f" VerticalAlignment="Center" Margin="5" />

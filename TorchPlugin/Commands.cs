@@ -15,11 +15,39 @@ namespace TorchPlugin
             Context?.Respond(message);
         }
 
+        private void RespondWithHelp()
+        {
+            Respond("Bugfixes commands:");
+            Respond("  !pfi help");
+            Respond("  !pfi info");
+            Respond("    Prints the current configuration settings.");
+            Respond("  !pfi enable");
+            Respond("    Enables the plugin");
+            Respond("  !pfi disable");
+            Respond("    Disables the plugin");
+            Respond("  !pfi fix <name> <value>");
+            Respond("    Enables or disables a specific fix");
+            RespondWithListOfFixes();
+            Respond("Valid bool values:");
+            Respond("  False: 0 off no n false f");
+            Respond("  True: 1 on yes y false f");
+        }
+
+        private void RespondWithListOfFixes()
+        {
+            Respond("Valid fix names:");
+            Respond("  turret_nan: Fix NaN crash in TurretControlBlock");
+            Respond("  ai_crash: Fix crash in AI blocks");
+            //BOOL_OPTION Respond("  option_name: Option label");
+        }
+
         private void RespondWithInfo()
         {
             var config = Plugin.Instance.Config;
-            Respond($"Bugfixes plugin is enabled: {Format(config.Enabled)}");
+            var status = config.Enabled ? "Enabled" : "Disabled";
+            Respond($"Bugfixes plugin: {status}");
             Respond($"turret_nan: {Format(config.TurretNan)}");
+            Respond($"ai_crash: {Format(config.AiCrash)}");
 //BOOL_OPTION Respond($"option_name: {Format(config.OptionName)}");
         }
 
@@ -27,7 +55,15 @@ namespace TorchPlugin
         private static string Format(bool value) => value ? "Yes" : "No";
 
         // ReSharper disable once UnusedMember.Global
-        [Command("Bugfixes info", "Bugfixes: Prints the current settings")]
+        [Command("bfi help", "Bugfixes: Prints help on usage")]
+        [Permission(MyPromoteLevel.Admin)]
+        public void Help()
+        {
+            RespondWithHelp();
+        }
+
+        // ReSharper disable once UnusedMember.Global
+        [Command("bfi info", "Bugfixes: Prints the current settings")]
         [Permission(MyPromoteLevel.None)]
         public void Info()
         {
@@ -35,7 +71,7 @@ namespace TorchPlugin
         }
 
         // ReSharper disable once UnusedMember.Global
-        [Command("Bugfixes enable", "Bugfixes: Enables the plugin")]
+        [Command("bfi enable", "Bugfixes: Enables the plugin")]
         [Permission(MyPromoteLevel.Admin)]
         public void Enable()
         {
@@ -44,7 +80,7 @@ namespace TorchPlugin
         }
 
         // ReSharper disable once UnusedMember.Global
-        [Command("Bugfixes disable", "Bugfixes: Disables the plugin")]
+        [Command("bfi disable", "Bugfixes: Disables the plugin")]
         [Permission(MyPromoteLevel.Admin)]
         public void Disable()
         {
@@ -53,7 +89,7 @@ namespace TorchPlugin
         }
 
         // ReSharper disable once UnusedMember.Global
-        [Command("fix", "Enables or disables a fix")]
+        [Command("bfi fix", "Bugfixes: Enables or disables a specific fix")]
         [Permission(MyPromoteLevel.Admin)]
         public void Fix(string name, string flag)
         {
@@ -69,6 +105,10 @@ namespace TorchPlugin
                     Config.TurretNan = parsedFlag;
                     break;
 
+                case "ai_crash":
+                    Config.AiCrash = parsedFlag;
+                    break;
+
                 /*BOOL_OPTION
                 case "option_name":
                     Config.OptionName = parsedFlag;
@@ -77,16 +117,13 @@ namespace TorchPlugin
                 BOOL_OPTION*/
                 default:
                     Respond($"Unknown fix: {name}");
-                    Respond($"Valid fix names:");
-                    Respond($"  laser_antenna");
-                    Respond($"  turret_nan");
-//BOOL_OPTION Respond($"  option_name");
+                    Help();
                     return;
             }
 
             RespondWithInfo();
         }
-        
+
         // Helper methods
         private static bool TryParseBool(string text, out bool result)
         {

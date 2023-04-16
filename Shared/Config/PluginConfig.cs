@@ -30,7 +30,9 @@ namespace Shared.Config
         }
 
         private bool enabled = true;
+        private bool detectCodeChanges = true;
         private bool turretNan = true;
+private bool aiCrash = true;
 //BOOL_OPTION private bool optionName = true;
 
         public bool Enabled
@@ -39,10 +41,21 @@ namespace Shared.Config
             set => SetValue(ref enabled, value);
         }
         
+        public bool DetectCodeChanges
+        {
+            get => detectCodeChanges;
+            set => SetValue(ref detectCodeChanges, value);
+        }
+
         public bool TurretNan
         {
             get => turretNan;
             set => SetValue(ref turretNan, value);
+        }
+        public bool AiCrash
+        {
+            get => aiCrash;
+            set => SetValue(ref aiCrash, value);
         }
         /*BOOL_OPTION
 

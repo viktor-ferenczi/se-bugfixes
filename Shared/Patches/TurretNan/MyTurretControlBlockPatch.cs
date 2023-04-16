@@ -3,6 +3,7 @@
 // https://github.com/viktor-ferenczi/LookAtNanRepro
 
 using System;
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using HarmonyLib;
@@ -11,7 +12,7 @@ using Shared.Plugin;
 using SpaceEngineers.Game.Entities.Blocks;
 using VRageMath;
 
-namespace Shared.Patches
+namespace Shared.Patches.TurretNan
 {
     // ReSharper disable once UnusedType.Global
     [SuppressMessage("ReSharper", "InconsistentNaming")]
@@ -23,6 +24,12 @@ namespace Shared.Patches
         private static bool enabled;
 
         public static void Configure()
+        {
+            enabled = Config.Enabled && Config.TurretNan;
+            Config.PropertyChanged += OnConfigChanged;
+        }
+        
+        private static void OnConfigChanged(object sender, PropertyChangedEventArgs e)
         {
             enabled = Config.Enabled && Config.TurretNan;
         }
