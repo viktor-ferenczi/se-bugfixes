@@ -41,6 +41,8 @@ these patches are expected to be removed anyway, so I did not bother using Torch
 - BetaMark
 - Casinost
 - wafoxxx
+- Dorimanx
+- Bishbash777
 
 #### Captain level supporters
 - Lotan
