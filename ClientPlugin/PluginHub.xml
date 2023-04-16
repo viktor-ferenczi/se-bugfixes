@@ -3,17 +3,19 @@
   <Id>viktor-ferenczi/se-bugfixes</Id>
   <GroupId>viktor-ferenczi/se-bugfixes</GroupId>
   <FriendlyName>Bugfixes</FriendlyName>
-  <Author>Viktor Ferenczi</Author>
+  <Author>Viktor</Author>
   <Commit>TODO: Git commit hash</Commit>
   <SourceDirectories>
     <Directory>Shared</Directory>
     <Directory>ClientPlugin</Directory>
   </SourceDirectories>
   <Tooltip>Fixes various bugs and crashes</Tooltip>
-  <Description>Please see the detailed list of bugs on the GitHub page:
+  <Description>Please see the detailed list on the GitHub page:
+
+https://github.com/viktor-ferenczi/se-bugfixes
+
+(scroll down)
     
-    https://github.com/viktor-ferenczi/se-bugfixes
-    
-    (scroll down)
+They are also listed in the plugin settings dialog.
   </Description>
 </PluginData>
