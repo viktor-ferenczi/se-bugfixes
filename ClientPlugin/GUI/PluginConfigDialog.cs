@@ -10,10 +10,10 @@ using VRageMath;
 namespace ClientPlugin.GUI
 {
 
-    public class MyPluginConfigDialog : MyGuiScreenBase
+    public class PluginConfigDialog : MyGuiScreenBase
     {
         private const string Caption = "Bugfixes Configuration";
-        public override string GetFriendlyName() => "MyPluginConfigDialog";
+        public override string GetFriendlyName() => "PluginConfigDialog";
 
         private MyLayoutTable layoutTable;
 
@@ -31,7 +31,7 @@ namespace ClientPlugin.GUI
         private MyGuiControlMultilineText infoText;
         private MyGuiControlButton closeButton;
 
-        public MyPluginConfigDialog() : base(new Vector2(0.5f, 0.5f), MyGuiConstants.SCREEN_BACKGROUND_COLOR, new Vector2(0.5f, 0.7f), false, null, MySandboxGame.Config.UIBkOpacity, MySandboxGame.Config.UIOpacity)
+        public PluginConfigDialog() : base(new Vector2(0.5f, 0.5f), MyGuiConstants.SCREEN_BACKGROUND_COLOR, new Vector2(0.5f, 0.7f), false, null, MySandboxGame.Config.UIBkOpacity, MySandboxGame.Config.UIOpacity)
         {
             EnabledBackgroundFade = true;
             m_closeOnEsc = true;

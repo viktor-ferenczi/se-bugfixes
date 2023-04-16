@@ -119,7 +119,7 @@ namespace ClientPlugin
         // ReSharper disable once UnusedMember.Global
         public void OpenConfigDialog()
         {
-            MyGuiSandbox.AddScreen(new MyPluginConfigDialog());
+            MyGuiSandbox.AddScreen(new PluginConfigDialog());
         }
     }
 }
