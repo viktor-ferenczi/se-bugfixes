@@ -9,11 +9,11 @@
     <Directory>Shared</Directory>
     <Directory>ClientPlugin</Directory>
   </SourceDirectories>
-  <Tooltip>Various bugfixes</Tooltip>
-  <Description>Various bugfixes for SE client and server:
-
-- Hiding voxel deformations outside sync distance 
-  Fixes https://support.keenswh.com/spaceengineers/pc/topic/relatively-small-voxel-deformations-on-planets-are-visible-from-long-distances
-
+  <Tooltip>Fixes various bugs and crashes</Tooltip>
+  <Description>Please see the detailed list of bugs on the GitHub page:
+    
+    https://github.com/viktor-ferenczi/se-bugfixes
+    
+    (scroll down)
   </Description>
 </PluginData>
