@@ -27,5 +27,11 @@ namespace Shared.Patches
 
             return true;
         }
+        
+        // Called after loading configuration, but before patching
+        public static void Configure()
+        {
+            MyTurretControlBlockPatch.Configure();
+        }
     }
 }

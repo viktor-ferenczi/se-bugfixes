@@ -1,5 +1,6 @@
 using Shared.Config;
 using Shared.Logging;
+using Shared.Patches;
 
 namespace Shared.Plugin
 {
@@ -15,6 +16,8 @@ namespace Shared.Plugin
             Plugin = plugin;
             Logger = plugin.Log;
             Config = plugin.Config;
+            
+            PatchHelpers.Configure();
         }
     }
 }
