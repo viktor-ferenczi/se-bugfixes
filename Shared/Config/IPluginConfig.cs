@@ -6,8 +6,9 @@ namespace Shared.Config
     {
         // Enables the plugin
         bool Enabled { get; set; }
-        // Fixes laser antenna connectivity issues
-        bool LaserAntenna { get; set; }
+        
+        // Fixes crash due to NaN value in TurretControlBlock
+        bool TurretNan { get; set; }
         /*BOOL_OPTION
 
         // Option tooltip

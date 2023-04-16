@@ -20,8 +20,8 @@ namespace ClientPlugin.GUI
         private MyGuiControlLabel enabledLabel;
         private MyGuiControlCheckbox enabledCheckbox;
 
-        private MyGuiControlLabel laserAntennaLabel;
-        private MyGuiControlCheckbox laserAntennaCheckbox;
+        private MyGuiControlLabel turretNanLabel;
+        private MyGuiControlCheckbox turretNanCheckbox;
 
         /*BOOL_OPTION
         private MyGuiControlLabel optionNameLabel;
@@ -61,8 +61,8 @@ namespace ClientPlugin.GUI
 
             var config = Common.Config;
             CreateCheckbox(out enabledLabel, out enabledCheckbox, config.Enabled, value => config.Enabled = value, "Enabled", "Enables the plugin");
-            CreateCheckbox(out laserAntennaLabel, out laserAntennaCheckbox, config.LaserAntenna, value => config.LaserAntenna = value, "Fix laser antenna", "Fixes laser antenna connectivity issues");
-            //BOOL_OPTION CreateCheckbox(out optionNameLabel, out optionNameCheckbox, config.OptionName, value => config.OptionName = value, "Option label", "Option tooltip");
+            CreateCheckbox(out turretNanLabel, out turretNanCheckbox, config.TurretNan, value => config.TurretNan = value, "Fix NaN crash in TurretControlBlock", "Fixes crash due to NaN value in TurretControlBlock");
+//BOOL_OPTION CreateCheckbox(out optionNameLabel, out optionNameCheckbox, config.OptionName, value => config.OptionName = value, "Option label", "Option tooltip");
 
             EnableDisableFixes();
 
@@ -103,8 +103,8 @@ namespace ClientPlugin.GUI
         {
             var enabled = enabledCheckbox.IsChecked;
 
-            laserAntennaCheckbox.Enabled = enabled;
-            //BOOL_OPTION optionNameCheckbox.Enabled = enabled;
+            turretNanCheckbox.Enabled = enabled;
+//BOOL_OPTION optionNameCheckbox.Enabled = enabled;
         }
 
         private void LayoutControls()
@@ -112,7 +112,7 @@ namespace ClientPlugin.GUI
             var size = Size ?? Vector2.One;
             layoutTable = new MyLayoutTable(this, new Vector2(-0.3f * size.X, -0.375f * size.Y), new Vector2(0.6f * size.X, 0.8f * size.Y));
             layoutTable.SetColumnWidths(400f, 100f);
-            layoutTable.SetRowHeights(80f, 50f,/*BOOL_OPTION 50f,BOOL_OPTION*/ 150f, 50f);
+            layoutTable.SetRowHeights(80f, 50f,50f,/*BOOL_OPTION 50f,BOOL_OPTION*/ 150f, 50f);
 
             var row = 0;
 
@@ -120,8 +120,8 @@ namespace ClientPlugin.GUI
             layoutTable.Add(enabledCheckbox, MyAlignH.Left, MyAlignV.Center, row, 1);
             row++;
 
-            layoutTable.Add(laserAntennaLabel, MyAlignH.Left, MyAlignV.Center, row, 0);
-            layoutTable.Add(laserAntennaCheckbox, MyAlignH.Left, MyAlignV.Center, row, 1);
+            layoutTable.Add(turretNanLabel, MyAlignH.Left, MyAlignV.Center, row, 0);
+            layoutTable.Add(turretNanCheckbox, MyAlignH.Left, MyAlignV.Center, row, 1);
             row++;
 
             /*BOOL_OPTION

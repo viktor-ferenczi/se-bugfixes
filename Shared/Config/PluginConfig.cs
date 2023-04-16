@@ -30,18 +30,19 @@ namespace Shared.Config
         }
 
         private bool enabled = true;
-        private bool laserAntenna = true;
-        //BOOL_OPTION private bool optionName = true;
+        private bool turretNan = true;
+//BOOL_OPTION private bool optionName = true;
 
         public bool Enabled
         {
             get => enabled;
             set => SetValue(ref enabled, value);
         }
-        public bool LaserAntenna
+        
+        public bool TurretNan
         {
-            get => laserAntenna;
-            set => SetValue(ref laserAntenna, value);
+            get => turretNan;
+            set => SetValue(ref turretNan, value);
         }
         /*BOOL_OPTION
 
