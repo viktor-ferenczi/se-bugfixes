@@ -84,6 +84,9 @@
         <Reference Include="Sandbox.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\Bin64\Sandbox.Common.dll</HintPath>
         </Reference>
+        <Reference Include="Sandbox.Game">
+          <HintPath>..\Bin64\Sandbox.Game.dll</HintPath>
+        </Reference>
         <Reference Include="Sandbox.Game, Version=0.1.1.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\Bin64\Sandbox.Game.dll</HintPath>
         </Reference>
@@ -125,6 +128,9 @@
         </Reference>
         <Reference Include="SixLabors.ImageSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\Bin64\SixLabors.ImageSharp.dll</HintPath>
+        </Reference>
+        <Reference Include="SpaceEngineers.Game">
+          <HintPath>..\Bin64\SpaceEngineers.Game.dll</HintPath>
         </Reference>
         <Reference Include="SpaceEngineers.Game, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
           <HintPath>..\Bin64\SpaceEngineers.Game.dll</HintPath>
@@ -520,7 +526,7 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="GUI\MyPluginConfigDialog.cs" />
+        <Compile Include="GUI\PluginConfigDialog.cs" />
         <Compile Include="Plugin.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>

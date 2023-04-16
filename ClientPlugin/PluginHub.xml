@@ -3,17 +3,19 @@
   <Id>viktor-ferenczi/se-bugfixes</Id>
   <GroupId>viktor-ferenczi/se-bugfixes</GroupId>
   <FriendlyName>Bugfixes</FriendlyName>
-  <Author>Viktor Ferenczi</Author>
+  <Author>Viktor</Author>
   <Commit>TODO: Git commit hash</Commit>
   <SourceDirectories>
     <Directory>Shared</Directory>
     <Directory>ClientPlugin</Directory>
   </SourceDirectories>
-  <Tooltip>Various bugfixes</Tooltip>
-  <Description>Various bugfixes for SE client and server:
+  <Tooltip>Fixes various bugs and crashes</Tooltip>
+  <Description>Please see the detailed list on the GitHub page:
 
-- Hiding voxel deformations outside sync distance 
-  Fixes https://support.keenswh.com/spaceengineers/pc/topic/relatively-small-voxel-deformations-on-planets-are-visible-from-long-distances
+https://github.com/viktor-ferenczi/se-bugfixes
 
+(scroll down)
+    
+They are also listed in the plugin settings dialog.
   </Description>
 </PluginData>

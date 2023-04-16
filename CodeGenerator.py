@@ -128,7 +128,9 @@ def generate_bool_option(name, command, label, tooltip):
 
 def main():
     pass
-    # generate_bool_option('LaserAntenna', 'laser_antenna', 'Fix laser antenna', 'Fixes laser antenna connectivity issues')
+    
+    # https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values
+    # generate_bool_option('TurretNan', 'turret_nan', 'Fix NaN crash in TurretControlBlock', 'Fixes crash due to NaN value in TurretControlBlock')
 
 
 if __name__ == '__main__':

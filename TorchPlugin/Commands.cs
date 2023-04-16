@@ -19,8 +19,8 @@ namespace TorchPlugin
         {
             var config = Plugin.Instance.Config;
             Respond($"Bugfixes plugin is enabled: {Format(config.Enabled)}");
-            Respond($"laser_antenna: {Format(config.LaserAntenna)}");
-            //BOOL_OPTION Respond($"option_name: {Format(config.OptionName)}");
+            Respond($"turret_nan: {Format(config.TurretNan)}");
+//BOOL_OPTION Respond($"option_name: {Format(config.OptionName)}");
         }
 
         // Custom formatters
@@ -65,8 +65,8 @@ namespace TorchPlugin
 
             switch (name)
             {
-                case "laser_antenna":
-                    Config.LaserAntenna = parsedFlag;
+                case "turret_nan":
+                    Config.TurretNan = parsedFlag;
                     break;
 
                 /*BOOL_OPTION
@@ -79,7 +79,8 @@ namespace TorchPlugin
                     Respond($"Unknown fix: {name}");
                     Respond($"Valid fix names:");
                     Respond($"  laser_antenna");
-                    //BOOL_OPTION Respond($"  option_name");
+                    Respond($"  turret_nan");
+//BOOL_OPTION Respond($"  option_name");
                     return;
             }
 

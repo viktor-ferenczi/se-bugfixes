@@ -9,24 +9,25 @@ namespace TorchPlugin
     public class PluginConfig : ViewModel, IPluginConfig
     {
         private bool enabled = true;
-        private bool laserAntenna = false;
-        //BOOL_OPTION private bool optionName = false;
+        private bool turretNan = true;
+//BOOL_OPTION private bool optionName = true;
 
-        [Display(GroupName = "General", Name = "Enable plugin", Order = 1, Description = "Enables/disables the plugin")]
+        [Display(Order = 1, GroupName = "General", Name = "Enable plugin", Description = "Enables/disables the plugin")]
         public bool Enabled
         {
             get => enabled;
             set => SetValue(ref enabled, value);
         }
-        [Display(Order = 8, GroupName = "Fixes", Name = "Fix laser antenna", Description = "Fixes laser antenna connectivity issues")]
-        public bool LaserAntenna
+        
+        [Display(Order = 2, GroupName = "Fixes", Name = "Fix NaN crash in TurretControlBlock", Description = "Fixes crash due to NaN value in TurretControlBlock")]
+        public bool TurretNan
         {
-            get => laserAntenna;
-            set => SetValue(ref laserAntenna, value);
+            get => turretNan;
+            set => SetValue(ref turretNan, value);
         }
         /*BOOL_OPTION
 
-        [Display(Order = 8, GroupName = "Fixes", Name = "Option label", Description = "Option tooltip")]
+        [Display(Order = 3, GroupName = "Fixes", Name = "Option label", Description = "Option tooltip")]
         public bool OptionName
         {
             get => optionName;

@@ -1,7 +1,7 @@
 # Space Engineers Bugfixes Plugin
 
 **Scroll down for:**
-- List of features
+- List of bugs fixed
 - Their technical details
 - Keen bug tickets to vote on
 
@@ -58,10 +58,9 @@ these patches are expected to be removed anyway, so I did not bother using Torch
 
 ## Technical details
 
-### Laser antenna connection issues
+### Crash due to NaN value in MyTurretControlBlock
 
-TBD
+Log: `ArithmeticException: Function does not accept floating point Not-a-Number values`
 
-Please vote on the support tickets:
-- [Laser antenna connection issues](https://support.keenswh.com/spaceengineers/pc/topic/laser-antenna-connection-issues)
-- [Laser antennas do not work through safe zone or atmosphere](https://support.keenswh.com/spaceengineers/pc/topic/laser-antennas-dont-work-through-safe-zones-or-atmosphere_3)
+[Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values)
+[RCA and Repro](https://github.com/viktor-ferenczi/LookAtNanRepro)
