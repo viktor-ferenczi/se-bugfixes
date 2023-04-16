@@ -9,8 +9,8 @@ namespace TorchPlugin
     public class PluginConfig : ViewModel, IPluginConfig
     {
         private bool enabled = true;
-        private bool turretNan = false;
-//BOOL_OPTION private bool optionName = false;
+        private bool turretNan = true;
+//BOOL_OPTION private bool optionName = true;
 
         [Display(Order = 1, GroupName = "General", Name = "Enable plugin", Description = "Enables/disables the plugin")]
         public bool Enabled
