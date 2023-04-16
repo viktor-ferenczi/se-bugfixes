@@ -12,7 +12,7 @@ using Shared.Plugin;
 using Shared.Tools;
 using SpaceEngineers.Game.EntityComponents.Blocks;
 
-namespace Shared.Patches
+namespace Shared.Patches.AICrash
 {
     // ReSharper disable once UnusedType.Global
     [SuppressMessage("ReSharper", "InconsistentNaming")]

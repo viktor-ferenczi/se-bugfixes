@@ -12,7 +12,7 @@ using Shared.Plugin;
 using SpaceEngineers.Game.Entities.Blocks;
 using VRageMath;
 
-namespace Shared.Patches
+namespace Shared.Patches.TurretNan
 {
     // ReSharper disable once UnusedType.Global
     [SuppressMessage("ReSharper", "InconsistentNaming")]

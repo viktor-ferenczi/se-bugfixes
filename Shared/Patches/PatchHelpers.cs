@@ -3,6 +3,8 @@ using System.Linq;
 using System.Reflection;
 using HarmonyLib;
 using Shared.Logging;
+using Shared.Patches.AICrash;
+using Shared.Patches.TurretNan;
 using Shared.Plugin;
 using Shared.Tools;
 

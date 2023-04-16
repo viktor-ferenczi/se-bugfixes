@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logging\PluginLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\AICrash\MyOffensiveWithWeaponsCombatComponentPatch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\PatchHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Patches\Voxel\MyPlanetPatch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\TurretNan\MyTurretControlBlockPatch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Plugin\Common.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Plugin\ICommonPlugin.cs" />
@@ -38,5 +39,7 @@
     <Content Include="$(MSBuildThisFileDirectory)..\ReplaceGuidsAndRename.py">
       <Link>ReplaceGuidsAndRename.py</Link>
     </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Patches\AICrash\OnBeforeRemovedFromContainer.original.il" />
+    <Content Include="$(MSBuildThisFileDirectory)Patches\AICrash\OnBeforeRemovedFromContainer.patched.il" />
   </ItemGroup>
 </Project>
