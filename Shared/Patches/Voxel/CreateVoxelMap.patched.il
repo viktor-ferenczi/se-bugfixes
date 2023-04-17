@@ -1,4 +1,4 @@
-// f8bb902a
+// aead46d9
 ldloca.s 0 (VRageMath.BoundingBox)
 ldarg.3
 call static VRageMath.Vector3 VRageMath.Vector3I::op_Implicit(VRageMath.Vector3I value)
@@ -38,6 +38,11 @@ ldarg.0
 ldfld VRage.Collections.MyConcurrentDictionary`2<VRageMath.Vector3I, Sandbox.Game.Entities.MyVoxelPhysics> Sandbox.Game.Entities.MyPlanet::m_physicsShapes
 callvirt System.Int32 VRage.Collections.MyConcurrentDictionary`2<VRageMath.Vector3I, Sandbox.Game.Entities.MyVoxelPhysics>::get_Count()
 stloc.1
+ldarg.0
+ldloc.1
+ldarg.3
+ldarg.s 4
+call static System.Void Shared.Patches.Voxel.MyPlanetPatch::Warn(Sandbox.Game.Entities.MyPlanet planet, System.Int32 count, VRageMath.Vector3I storageMin, VRageMath.Vector3I storageMax)
 [EX_BeginException]
 ldarg.0
 ldfld VRage.Collections.MyConcurrentDictionary`2<VRageMath.Vector3I, Sandbox.Game.Entities.MyVoxelPhysics> Sandbox.Game.Entities.MyPlanet::m_physicsShapes

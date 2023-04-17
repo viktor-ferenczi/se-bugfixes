@@ -31,7 +31,8 @@ namespace Shared.Patches.Voxel
             enabled = Config.Enabled && Config.VoxelOom;
         }
 
-        private static readonly FieldInfo physicsShapesFieldInfo = AccessTools.DeclaredField(typeof(MyPlanet), "m_physicsShapes");
+        private static readonly FieldInfo physicsShapesFieldInfo =
+            AccessTools.DeclaredField(typeof(MyPlanet), "m_physicsShapes");
 
         [HarmonyTranspiler]
         [HarmonyPatch("CreateVoxelMap")]
@@ -44,7 +45,8 @@ namespace Shared.Patches.Voxel
 
             if (il.HashInstructionsHex() != "f8bb902a")
             {
-                Log.Warning($"{nameof(MyPlanetPatch)}.{nameof(CreateVoxelMapTranspiler)}: Code change detected [{il.HashInstructionsHex()}], ignoring patch (this should be harmless)");
+                Log.Warning(
+                    $"{nameof(MyPlanetPatch)}.{nameof(CreateVoxelMapTranspiler)}: Code change detected [{il.HashInstructionsHex()}], ignoring patch (this should be harmless)");
                 return il;
             }
 
@@ -55,7 +57,8 @@ namespace Shared.Patches.Voxel
             il.Insert(++j, new CodeInstruction(OpCodes.Ldloc_1)); // count
             il.Insert(++j, new CodeInstruction(OpCodes.Ldarg_3)); // storageMin
             il.Insert(++j, il.Find(i => i.opcode == OpCodes.Ldarg_S).Clone()); // storageMax
-            il.Insert(++j, new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(MyPlanetPatch), nameof(Warn))));
+            il.Insert(++j,
+                new CodeInstruction(OpCodes.Call, AccessTools.DeclaredMethod(typeof(MyPlanetPatch), nameof(Warn))));
 
             il.RecordPatchedCode();
             return il;
@@ -64,15 +67,15 @@ namespace Shared.Patches.Voxel
         public static void Warn(MyPlanet planet, int count, Vector3I storageMin, Vector3I storageMax)
         {
             var warn = (
-                count == 0 ||
                 count < 100_000 && count % 10_000 == 0 ||
                 count < 1_000_000 && count % 100_000 == 0 ||
                 count % 1_000_000 == 0 ||
-                count == 47990000 ||
-                count == 47999000 ||
-                count == 47999800 ||
-                count == 47999850 ||
-                count == 47995853);
+                count == 47_990_000 ||
+                count == 47_999_000 ||
+                count == 47_999_800 ||
+                count == 47_999_850 ||
+                count == 47_995_853);
+
             if (!warn)
                 return;
 
@@ -88,16 +91,18 @@ namespace Shared.Patches.Voxel
             MyGamePruningStructure.GetTopMostEntitiesInBox(ref box, entities);
             Log.Warning($"Intersecting entities: {entities.Count}");
 
-            if (entities.Count > 1000)
+            var entityLimit = count >= 47_999_800 ? 1000 : 100;
+            if (entities.Count > entityLimit)
             {
-                Log.Warning($"!!! Listing only the top 1000 entities !!!");
-                entities.RemoveRange(1000, entities.Count - 1000);
+                Log.Warning($"!!! Listing only {entityLimit} entities !!!");
+                entities.RemoveRange(1000, entities.Count - entityLimit);
             }
 
             entities.Sort((a, b) => a.EntityId.CompareTo(b.EntityId));
             foreach (var entity in entities)
             {
-                Log.Warning($"  {entity.GetType().Name} [{entity.EntityId}]: {entity.DebugNameNoId()} @ {entity.DebugPosition()}");
+                Log.Warning(
+                    $"  {entity.GetType().Name} [{entity.EntityId}]: {entity.DebugNameNoId()} @ {entity.DebugPosition()}");
             }
 
             Log.Warning("End of entity list.");
