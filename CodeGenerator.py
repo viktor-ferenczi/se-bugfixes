@@ -135,6 +135,9 @@ def main():
     # https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values
     # generate_bool_option('AiCrash', 'ai_crash', 'Fix crash in AI blocks', 'Fixes crash in AI (Automaton) blocks (requires restart)')
 
+    # https://support.keenswh.com/spaceengineers/pc/topic/27952-servers-crash-on-player-join-1-202
+    # generate_bool_option('Serialize', 'serialize', 'Fix NullRef on saving world', 'Fixes NullRef exception on saving world (requires restart)')
+
 
 if __name__ == '__main__':
     main()

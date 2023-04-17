@@ -33,7 +33,10 @@ namespace Shared.Config
         private bool detectCodeChanges = true;
         private bool turretNan = true;
         private bool aiCrash = true;
-//BOOL_OPTION private bool optionName = true;
+        private bool serialize = true;
+/*BOOL_OPTION
+        private bool optionName = true;
+BOOL_OPTION*/
 
         public bool Enabled
         {
@@ -52,18 +55,26 @@ namespace Shared.Config
             get => turretNan;
             set => SetValue(ref turretNan, value);
         }
+
         public bool AiCrash
         {
             get => aiCrash;
             set => SetValue(ref aiCrash, value);
         }
-        /*BOOL_OPTION
 
+        public bool Serialize
+        {
+            get => serialize;
+            set => SetValue(ref serialize, value);
+        }
+        
+        /*BOOL_OPTION
         public bool OptionName
         {
             get => optionName;
             set => SetValue(ref optionName, value);
         }
+        
         BOOL_OPTION*/
     }
 }
