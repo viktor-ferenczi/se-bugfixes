@@ -32,7 +32,7 @@ namespace Shared.Config
         private bool enabled = true;
         private bool detectCodeChanges = true;
         private bool turretNan = true;
-private bool aiCrash = true;
+        private bool aiCrash = true;
 //BOOL_OPTION private bool optionName = true;
 
         public bool Enabled

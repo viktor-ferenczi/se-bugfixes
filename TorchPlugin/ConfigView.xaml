@@ -50,6 +50,22 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <!--BOOL_OPTION
             <RowDefinition Height="Auto" />
             BOOL_OPTION-->
@@ -67,8 +83,8 @@
         <TextBlock Grid.Row="3" Grid.Column="1" Text="Fixes crash in AI (Automaton) blocks (requires restart)" VerticalAlignment="Center" Margin="5"/>
 
         <!--BOOL_OPTION
-        <CheckBox Grid.Row="3" Grid.Column="0" Name="OptionName" IsChecked="{Binding OptionName}" Margin="5"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="Option tooltip" VerticalAlignment="Center" Margin="5"/>
+        <CheckBox Grid.Row="4" Grid.Column="0" Name="OptionName" IsChecked="{Binding OptionName}" Margin="5"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="Option tooltip" VerticalAlignment="Center" Margin="5"/>
 
         BOOL_OPTION-->
         <TextBlock Grid.Row="20" Grid.Column="0" Grid.ColumnSpan="2" Text="Configuration changes are saved automatically. It is safe to change them while the game is running." VerticalAlignment="Center" Margin="5" />
@@ -77,12 +93,16 @@
         <TextBlock Grid.Row="23" Grid.Column="1" Text="!bug info" VerticalAlignment="Center" Margin="5" />
         <TextBlock Grid.Row="24" Grid.Column="1" Text="!bug fix name bool" VerticalAlignment="Center" Margin="5" />
 
-        <TextBlock Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2" Text="Available names: turret_nan" VerticalAlignment="Center" Margin="5" />
-        <!-- Append these: , ai_crash{BOOL_OPTION}, option_name{/BOOL_OPTION} -->
+        <TextBlock Grid.Row="25" Grid.Column="0" Grid.ColumnSpan="2" Text="Available names:" VerticalAlignment="Center" Margin="5" />
+        <TextBlock Grid.Row="26" Grid.Column="0" Grid.ColumnSpan="2" Text="  turret_nan" VerticalAlignment="Center" Margin="5" />
+        <TextBlock Grid.Row="27" Grid.Column="0" Grid.ColumnSpan="2" Text="  ai_crash" VerticalAlignment="Center" Margin="5" />
+        <!--BOOL_OPTION
+        <TextBlock Grid.Row="28" Grid.Column="0" Grid.ColumnSpan="2" Text="  option_name" VerticalAlignment="Center" Margin="5" />
+        BOOL_OPTION-->
 
-        <TextBlock Grid.Row="26" Grid.Column="0" Grid.ColumnSpan="2" Text="Accepted bool values:" VerticalAlignment="Center" Margin="5" />
-        <TextBlock Grid.Row="27" Grid.Column="1" Text="False: 0 off no n false f" VerticalAlignment="Center" Margin="5" />
-        <TextBlock Grid.Row="28" Grid.Column="1" Text="True: 1 on yes y false f" VerticalAlignment="Center" Margin="5" />
+        <TextBlock Grid.Row="48" Grid.Column="0" Grid.ColumnSpan="2" Text="Accepted bool values:" VerticalAlignment="Center" Margin="5" />
+        <TextBlock Grid.Row="49" Grid.Column="1" Text="False: 0 off no n false f" VerticalAlignment="Center" Margin="5" />
+        <TextBlock Grid.Row="50" Grid.Column="1" Text="True: 1 on yes y false f" VerticalAlignment="Center" Margin="5" />
 
     </Grid>
 </UserControl>

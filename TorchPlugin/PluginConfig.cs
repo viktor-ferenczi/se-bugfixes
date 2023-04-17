@@ -11,7 +11,7 @@ namespace TorchPlugin
         private bool enabled = true;
         private bool detectCodeChanges = true;
         private bool turretNan = true;
-private bool aiCrash = true;
+        private bool aiCrash = true;
 //BOOL_OPTION private bool optionName = true;
 
         [Display(Order = 1, GroupName = "General", Name = "Enable plugin", Description = "Enables/disables the plugin")]

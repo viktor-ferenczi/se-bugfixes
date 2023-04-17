@@ -36,9 +36,9 @@ namespace TorchPlugin
         private void RespondWithListOfFixes()
         {
             Respond("Valid fix names:");
-            Respond("  turret_nan: Fix NaN crash in TurretControlBlock");
-            Respond("  ai_crash: Fix crash in AI blocks");
-            //BOOL_OPTION Respond("  option_name: Option label");
+            Respond("  turret_nan: Fixes crash due to NaN value in TurretControlBlock");
+            Respond("  ai_crash: Fixes crash in AI (Automaton) blocks (requires restart)");
+//BOOL_OPTION Respond("  option_name: Option tooltip");
         }
 
         private void RespondWithInfo()

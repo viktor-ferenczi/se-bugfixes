@@ -72,8 +72,8 @@ Log:
 ArithmeticException: Function does not accept floating point Not-a-Number values
 ```
 
-[Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values)
-[RCA and Repro](https://github.com/viktor-ferenczi/LookAtNanRepro)
+- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values)
+- [RCA and Repro](https://github.com/viktor-ferenczi/LookAtNanRepro)
 
 ### Crash on docking/undocking grids with offensive AI blocks
 
@@ -87,4 +87,4 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 
 Reported, root caused and patched by `zznty`. Thanks!
 
-[Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)
+- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)

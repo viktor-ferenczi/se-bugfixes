@@ -15,10 +15,11 @@ namespace Shared.Config
         
         // Fixes crash in AI (Automaton) blocks (requires restart)
         bool AiCrash { get; set; }
-        /*BOOL_OPTION
 
+        /*BOOL_OPTION
         // Option tooltip
         bool OptionName { get; set; }
+        
         BOOL_OPTION*/
     }
 }
