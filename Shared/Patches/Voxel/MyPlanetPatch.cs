@@ -3,23 +3,24 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
 using HarmonyLib;
 using Sandbox.Game.Entities;
 using Shared.Config;
+using Shared.Logging;
 using Shared.Plugin;
 using Shared.Tools;
+using VRage.Collections;
+using VRageMath;
 
 namespace Shared.Patches.Voxel
 {
     // ReSharper disable once UnusedType.Global
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     [SuppressMessage("ReSharper", "UnusedMember.Local")]
-    [HarmonyPatch]
+    [HarmonyPatch(typeof(MyPlanet))]
     public static class MyPlanetPatch
     {
-        // CreateVoxelMap
-        
+        private static IPluginLogger Log => Common.Logger;
         private static IPluginConfig Config => Common.Config;
         private static bool enabled;
         
@@ -30,48 +31,32 @@ namespace Shared.Patches.Voxel
             enabled = Config.Enabled && Config.VoxelOom;
         }
 
+        private static readonly FieldInfo physicsShapesFieldInfo = AccessTools.DeclaredField(typeof(MyPlanet), "m_physicsShapes"); 
 
-        // public static IEnumerable<MethodBase> TargetMethods()
-        // {
-        //     foreach (var methodInfo in AccessTools.GetDeclaredMethods(typeof(MyPlanet)))
-        //     {
-        //         yield return methodInfo;
-        //     }
-        // }
-        
-        // private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-        // {
-        //     if (!enabled)
-        //         return instructions;
-        //
-        //     foreach (var i in instructions)
-        //     {
-        //         var opcode = i.opcode;
-        //         if (opcode == OpCodes.Ldfld)
-        //         {
-        //             
-        //         } else if (opcode == OpCodes.Stfld)
-        //         {
-        //             
-        //         }
-        //         
-        //         switch (i.opcode)
-        //         {
-        //             case OpCodes.Ldfld:
-        //                 
-        //         }
-        //     }
-        //
-        //     var il = instructions.ToList();
-        //     il.RecordOriginalCode();
-        //
-        //     var eventInfo = typeof(MyCubeGrid).GetEvent(nameof(MyCubeGrid.OnConnectionChangeCompleted), AccessTools.allDeclared);
-        //     Debug.Assert(eventInfo != null);
-        //     il = il.MethodReplacer(eventInfo.AddMethod, eventInfo.RemoveMethod).ToList();
-        //
-        //     il.RecordPatchedCode();
-        //     return il;
-        // }
-        
+        [HarmonyTranspiler]
+        [HarmonyPatch("CreateVoxelMap")]
+        private static IEnumerable<CodeInstruction> CreateVoxelMapTranspiler(IEnumerable<CodeInstruction> instructions)
+        {
+            if (!enabled)
+                return instructions;
+
+            var il = instructions.ToList();
+            
+            if (il.HashInstructionsHex() != "f8bb902a")
+            {
+                Log.Warning($"{nameof(MyPlanetPatch)}.{nameof(CreateVoxelMapTranspiler)}: Code change detected [{il.HashInstructionsHex()}], ignoring patch (this should be harmless)");
+                return il;
+            }
+            
+            il.RecordOriginalCode();
+            
+            // var planet = __instance;
+            // var physicsShapes = (MyConcurrentDictionary<Vector3I, object>)physicsShapesFieldInfo.GetValue(planet);
+            //
+            // Log.Warning($"physicsShapes.Count={physicsShapes.Count}");
+
+            il.RecordPatchedCode();
+            return il;
+        }
     }
 }

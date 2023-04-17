@@ -88,7 +88,7 @@
         <TextBlock Grid.Row="4" Grid.Column="1" Text="Fixes NullRef exception on saving world (requires restart)" VerticalAlignment="Center" Margin="5"/>
 
         <CheckBox Grid.Row="5" Grid.Column="0" Name="VoxelOom" IsChecked="{Binding VoxelOom}" Margin="5"/>
-        <TextBlock Grid.Row="5" Grid.Column="1" Text="Fixes crash due to OOM in MyPlanet (requires restart)" VerticalAlignment="Center" Margin="5"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="Warn about crash due to OOM in MyPlanet (requires restart)" VerticalAlignment="Center" Margin="5"/>
 
         <!--BOOL_OPTION
         <CheckBox Grid.Row="6" Grid.Column="0" Name="OptionName" IsChecked="{Binding OptionName}" Margin="5"/>

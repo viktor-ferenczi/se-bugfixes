@@ -44,5 +44,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Patches\AICrash\OnBeforeRemovedFromContainer.patched.il" />
     <Content Include="$(MSBuildThisFileDirectory)Patches\Serialize\Serialize.original.il" />
     <Content Include="$(MSBuildThisFileDirectory)Patches\Serialize\Serialize.patched.il" />
+    <Content Include="$(MSBuildThisFileDirectory)Patches\Voxel\CreateVoxelMap.original.il" />
+    <Content Include="$(MSBuildThisFileDirectory)Patches\Voxel\CreateVoxelMap.patched.il" />
   </ItemGroup>
 </Project>

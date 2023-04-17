@@ -41,7 +41,7 @@ namespace Shared.Patches.Serialize
 
             if (il.HashInstructionsHex() != "d72a00d2")
             {
-                Log.Warning($"{nameof(MyComponentBase)}.{nameof(SerializeTranspiler)}: Code change detected, ignoring patch (this should be harmless)");
+                Log.Warning($"{nameof(MyComponentBase)}.{nameof(SerializeTranspiler)}: Code change detected [{il.HashInstructionsHex()}], ignoring patch (this should be harmless)");
                 return il;
             }
             

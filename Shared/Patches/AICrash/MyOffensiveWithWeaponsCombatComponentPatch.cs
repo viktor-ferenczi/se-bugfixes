@@ -41,7 +41,7 @@ namespace Shared.Patches.AICrash
             
             if (il.HashInstructionsHex() != "c45f29b9")
             {
-                Log.Warning($"{nameof(MyOffensiveWithWeaponsCombatComponentPatch)}.{nameof(OnBeforeRemovedFromContainerTranspiler)}: Code change detected, ignoring patch (this should be harmless)");
+                Log.Warning($"{nameof(MyOffensiveWithWeaponsCombatComponentPatch)}.{nameof(OnBeforeRemovedFromContainerTranspiler)}: Code change detected [{il.HashInstructionsHex()}], ignoring patch (this should be harmless)");
                 return il;
             }
             

@@ -53,7 +53,7 @@ BOOL_OPTION*/
             set => SetValue(ref serialize, value);
         }
         
-        [Display(Order = 6, GroupName = "Fixes", Name = "Fix OOM in MyPlanet", Description = "Fixes crash due to OOM in MyPlanet (requires restart)")]
+        [Display(Order = 6, GroupName = "Fixes", Name = "Warn about OOM in MyPlanet", Description = "Warn about crash due to OOM in MyPlanet (requires restart)")]
         public bool VoxelOom
         {
             get => voxelOom;
