@@ -42,5 +42,7 @@
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)Patches\AICrash\OnBeforeRemovedFromContainer.original.il" />
     <Content Include="$(MSBuildThisFileDirectory)Patches\AICrash\OnBeforeRemovedFromContainer.patched.il" />
+    <Content Include="$(MSBuildThisFileDirectory)Patches\Serialize\Serialize.original.il" />
+    <Content Include="$(MSBuildThisFileDirectory)Patches\Serialize\Serialize.patched.il" />
   </ItemGroup>
 </Project>

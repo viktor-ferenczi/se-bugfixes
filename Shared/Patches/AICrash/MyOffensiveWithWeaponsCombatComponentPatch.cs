@@ -29,7 +29,7 @@ namespace Shared.Patches.AICrash
         }
 
         [HarmonyTranspiler]
-        [HarmonyPatch("OnBeforeRemovedFromContainer")]
+        [HarmonyPatch(nameof(MyOffensiveCombatAbstractComponent.OnBeforeRemovedFromContainer))]
         [EnsureCode("c45f29b9")]
         private static IEnumerable<CodeInstruction> OnBeforeRemovedFromContainerTranspiler(IEnumerable<CodeInstruction> instructions)
         {
