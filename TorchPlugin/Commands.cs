@@ -39,6 +39,7 @@ namespace TorchPlugin
             Respond("  turret_nan: Fixes crash due to NaN value in TurretControlBlock");
             Respond("  ai_crash: Fixes crash in AI (Automaton) blocks (requires restart)");
             Respond("  serialize: Fixes NullRef exception on saving world (requires restart)");
+            Respond("  voxel_oom: Fixes crash due to OOM in MyPlanet (requires restart)");
 /*BOOL_OPTION
             Respond("  option_name: Option tooltip");
 BOOL_OPTION*/
@@ -52,6 +53,7 @@ BOOL_OPTION*/
             Respond($"turret_nan: {Format(config.TurretNan)}");
             Respond($"ai_crash: {Format(config.AiCrash)}");
             Respond($"serialize: {Format(config.Serialize)}");
+            Respond($"voxel_oom: {Format(config.VoxelOom)}");            
 /*BOOL_OPTION            
             Respond($"option_name: {Format(config.OptionName)}");
 BOOL_OPTION*/
@@ -117,6 +119,10 @@ BOOL_OPTION*/
 
                 case "serialize":
                     Config.Serialize = parsedFlag;
+                    break;
+
+                case "voxel_oom":
+                    Config.VoxelOom = parsedFlag;
                     break;
 
                 /*BOOL_OPTION

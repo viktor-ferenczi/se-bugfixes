@@ -6,6 +6,7 @@ using Shared.Logging;
 using Shared.Patches.AICrash;
 using Shared.Patches.Serialize;
 using Shared.Patches.TurretNan;
+using Shared.Patches.Voxel;
 using Shared.Plugin;
 using Shared.Tools;
 
@@ -67,6 +68,7 @@ namespace Shared.Patches
             MyTurretControlBlockPatch.Configure();
             MyOffensiveWithWeaponsCombatComponentPatch.Configure();
             MyComponentBasePatch.Configure();
+            MyPlanetPatch.Configure();
         }
     }
 }

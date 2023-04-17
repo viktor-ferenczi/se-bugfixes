@@ -104,3 +104,25 @@ Initializer: System.NullReferenceException: Object reference not set to an insta
 Reported, root caused and patched by `Dude`. Thanks!
 
 - [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27952-servers-crash-on-player-join-1-202)
+- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)
+
+### Crash on OOM due to too many voxel 
+
+Config: `VoxelOOM`
+
+Log:
+```
+Initializer: System.OutOfMemoryException: Array dimensions exceeded supported range.
+   at System.Collections.Generic.Dictionary`2.Resize(Int32 newSize, Boolean forceNewHashCodes)
+   at System.Collections.Generic.Dictionary`2.Insert(TKey key, TValue value, Boolean add)
+   at VRage.Collections.MyConcurrentDictionary`2.set_Item(TKey key, TValue value)
+   at Sandbox.Game.Entities.MyPlanet.CreateVoxelMap(Vector3I_RangeIterator it, MyVoxelPhysics voxelMap, Vector3I storageMin, Vector3I storageMax)
+```
+
+Keen catches the exception, logs some extra information and re-trows it which crashes the game.
+
+```
+CreateVoxelMap-OOM-$47995853-${Min:{X:-5.637376E+08 Y:-1.313395E+09 Z:-1.435155E+09} Max:{X:-5.637366E+08 Y:-1.313394E+09 Z:-1.435154E+09}}-$[X:-550525, Y:-1282612, Z:-1401519]
+```
+
+- TBD: Support ticket
