@@ -106,7 +106,7 @@ Reported, root caused and patched by `Dude`. Thanks!
 - [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27952-servers-crash-on-player-join-1-202)
 - [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)
 
-### Crash on OOM due to too many voxel 
+### Crash on OOM due to too many physics shapes
 
 Config: `VoxelOOM`
 
@@ -119,7 +119,8 @@ Initializer: System.OutOfMemoryException: Array dimensions exceeded supported ra
    at Sandbox.Game.Entities.MyPlanet.CreateVoxelMap(Vector3I_RangeIterator it, MyVoxelPhysics voxelMap, Vector3I storageMin, Vector3I storageMax)
 ```
 
-Keen catches the exception, logs some extra information and re-trows it which crashes the game.
+Keen catches the exception, logs some extra information and re-throws it which crashes the game. 
+Unfortunately they forgot to log which planet is this (name, EntityId).
 
 ```
 CreateVoxelMap-OOM-$47995853-${Min:{X:-5.637376E+08 Y:-1.313395E+09 Z:-1.435155E+09} Max:{X:-5.637366E+08 Y:-1.313394E+09 Z:-1.435154E+09}}-$[X:-550525, Y:-1282612, Z:-1401519]

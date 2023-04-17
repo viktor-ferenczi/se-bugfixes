@@ -66,7 +66,7 @@ namespace Shared.Patches.Voxel
 
         public static void Warn(MyPlanet planet, int count, Vector3I storageMin, Vector3I storageMax)
         {
-            var warn = (
+            var warn = count > 0 && (
                 count < 100_000 && count % 10_000 == 0 ||
                 count < 1_000_000 && count % 100_000 == 0 ||
                 count % 1_000_000 == 0 ||
