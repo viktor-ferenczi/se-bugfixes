@@ -31,8 +31,61 @@ namespace Shared.Patches.Voxel
             enabled = Config.Enabled && Config.VoxelOom;
         }
 
-        private static readonly FieldInfo physicsShapesFieldInfo =
-            AccessTools.DeclaredField(typeof(MyPlanet), "m_physicsShapes");
+        private static readonly FieldInfo ClustersIntersectionField = AccessTools.DeclaredField(typeof(MyPlanet), "m_clustersIntersection");
+        private static readonly FieldInfo StartField = AccessTools.DeclaredField(typeof(Vector3I_RangeIterator), "m_start");
+        private static readonly FieldInfo EndField = AccessTools.DeclaredField(typeof(Vector3I_RangeIterator), "m_end");
+
+        [HarmonyPrefix]
+        [HarmonyPatch("GeneratePhysicalShapeForBox")]
+        private static bool GeneratePhysicalShapeForBox(MyPlanet __instance, ref Vector3I increment, ref BoundingBoxD shapeBox)
+        {
+            var clustersIntersection = (List<BoundingBoxD>)ClustersIntersectionField.GetValue(__instance);
+            if (clustersIntersection.Count >= 10000)
+            {
+                Log.Warning($"Too many items in m_clustersIntersection: {clustersIntersection.Count}; planet: {__instance.DebugNameNoId()}");
+            }
+            
+            var fixedIncrement = new Vector3I(1024, 1024, 1024);
+            if (increment != fixedIncrement)
+            {
+                Log.Warning($"GeneratePhysicalShapeForBox: Invalid increment: {increment}; planet: {__instance.DebugNameNoId()}");
+            }
+
+            var size = shapeBox.Size;
+            const double limit = 10000;
+            if (size.X > limit || size.Y > limit || size.Y > limit)
+            {
+                Log.Warning($"GeneratePhysicalShapeForBox: Too large shapeBox: {shapeBox}; planet: {__instance.DebugNameNoId()}");
+            }
+
+            return true;
+        }
+
+        [HarmonyPrefix]
+        [HarmonyPatch("CreateVoxelPhysics")]
+        private static bool CreateVoxelPhysicsPrefix(MyPlanet __instance, ref Vector3I increment, ref Vector3I_RangeIterator it)
+        {
+            var fixedIncrement = new Vector3I(1024, 1024, 1024);
+            if (increment != fixedIncrement)
+            {
+                Log.Warning($"CreateVoxelPhysicsPrefix: Invalid increment: {increment}; planet: {__instance.DebugNameNoId()}");
+            }
+
+            var start = (Vector3I)StartField.GetValue(it);
+            var end = (Vector3I)EndField.GetValue(it);
+            var inner = end - start;
+            var outer = inner + new Vector3I(1, 1, 1);
+            if (inner.X < 0 || inner.Y < 0 || inner.Z < 0)
+            {
+                Log.Warning($"CreateVoxelPhysicsPrefix: Negative iterator box size: {inner}; start = {start}; end = {end}; planet: {__instance.DebugNameNoId()}");
+            }
+            else if (inner.X >= 1000 || inner.Y >= 1000 || inner.Z >= 1000 || outer.X * outer.Y * outer.Z >= 50 * 50 * 50)
+            {
+                Log.Warning($"CreateVoxelPhysicsPrefix: Too large iterator box size: {inner}; start = {start}; end = {end}; planet: {__instance.DebugNameNoId()}");
+            }
+
+            return true;
+        }
 
         [HarmonyTranspiler]
         [HarmonyPatch("CreateVoxelMap")]
