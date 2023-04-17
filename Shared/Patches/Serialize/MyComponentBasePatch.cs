@@ -29,7 +29,7 @@ namespace Shared.Patches.Serialize
 
         [HarmonyTranspiler]
         [HarmonyPatch("Serialize")]
-        [EnsureCode("ffffffff")]
+        [EnsureCode("d72a00d2")]
         private static IEnumerable<CodeInstruction> SerializeTranspiler(IEnumerable<CodeInstruction> instructions, ILGenerator gen)
         {
             if (!enabled)
