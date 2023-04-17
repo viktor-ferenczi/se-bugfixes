@@ -39,7 +39,7 @@ namespace TorchPlugin
             Respond("  turret_nan: Fixes crash due to NaN value in TurretControlBlock");
             Respond("  ai_crash: Fixes crash in AI (Automaton) blocks (requires restart)");
             Respond("  serialize: Fixes NullRef exception on saving world (requires restart)");
-            Respond("  voxel_oom: Warn about crash due to OOM in MyPlanet (requires restart)");
+            Respond("  voxel_oom: Early warning about OOM crash in MyPlanet (requires restart)");
 /*BOOL_OPTION
             Respond("  option_name: Option tooltip");
 BOOL_OPTION*/

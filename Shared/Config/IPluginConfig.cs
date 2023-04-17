@@ -19,7 +19,7 @@ namespace Shared.Config
         // Fixes NullRef exception on saving world (requires restart)
         bool Serialize { get; set; }
         
-        // Warn about crash due to OOM in MyPlanet (requires restart)
+        // Early warning about OOM crash in MyPlanet (requires restart)
         bool VoxelOom { get; set; }
         
         /*BOOL_OPTION
