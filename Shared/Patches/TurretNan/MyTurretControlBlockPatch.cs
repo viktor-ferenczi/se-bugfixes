@@ -36,7 +36,6 @@ namespace Shared.Patches.TurretNan
 
         [HarmonyPostfix]
         [HarmonyPatch(nameof(MyTurretControlBlock.LookAt))]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void LookAtPostfix(ref Vector3 __result)
         {
             if (!enabled)

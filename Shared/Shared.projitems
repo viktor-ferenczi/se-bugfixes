@@ -24,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Plugin\ICommonPlugin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\CodeChange.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\EnsureCode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Tools\EntityExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\Hashing.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tools\TranspilerHelpers.cs" />
   </ItemGroup>
@@ -44,5 +45,7 @@
     <Content Include="$(MSBuildThisFileDirectory)Patches\AICrash\OnBeforeRemovedFromContainer.patched.il" />
     <Content Include="$(MSBuildThisFileDirectory)Patches\Serialize\Serialize.original.il" />
     <Content Include="$(MSBuildThisFileDirectory)Patches\Serialize\Serialize.patched.il" />
+    <Content Include="$(MSBuildThisFileDirectory)Patches\Voxel\CreateVoxelMap.original.il" />
+    <Content Include="$(MSBuildThisFileDirectory)Patches\Voxel\CreateVoxelMap.patched.il" />
   </ItemGroup>
 </Project>
