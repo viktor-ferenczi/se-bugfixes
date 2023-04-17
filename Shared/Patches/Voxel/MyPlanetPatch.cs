@@ -95,11 +95,10 @@ namespace Shared.Patches.Voxel
             if (entities.Count > entityLimit)
             {
                 Log.Warning($"!!! Listing only {entityLimit} entities !!!");
-                entities.RemoveRange(1000, entities.Count - entityLimit);
             }
 
             entities.Sort((a, b) => a.EntityId.CompareTo(b.EntityId));
-            foreach (var entity in entities)
+            foreach (var entity in entities.Take(entityLimit))
             {
                 Log.Warning(
                     $"  {entity.GetType().Name} [{entity.EntityId}]: {entity.DebugNameNoId()} @ {entity.DebugPosition()}");
