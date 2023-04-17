@@ -36,9 +36,12 @@ namespace TorchPlugin
         private void RespondWithListOfFixes()
         {
             Respond("Valid fix names:");
-            Respond("  turret_nan: Fix NaN crash in TurretControlBlock");
-            Respond("  ai_crash: Fix crash in AI blocks");
-            //BOOL_OPTION Respond("  option_name: Option label");
+            Respond("  turret_nan: Fixes crash due to NaN value in TurretControlBlock");
+            Respond("  ai_crash: Fixes crash in AI (Automaton) blocks (requires restart)");
+            Respond("  serialize: Fixes NullRef exception on saving world (requires restart)");
+/*BOOL_OPTION
+            Respond("  option_name: Option tooltip");
+BOOL_OPTION*/
         }
 
         private void RespondWithInfo()
@@ -48,7 +51,10 @@ namespace TorchPlugin
             Respond($"Bugfixes plugin: {status}");
             Respond($"turret_nan: {Format(config.TurretNan)}");
             Respond($"ai_crash: {Format(config.AiCrash)}");
-//BOOL_OPTION Respond($"option_name: {Format(config.OptionName)}");
+            Respond($"serialize: {Format(config.Serialize)}");
+/*BOOL_OPTION            
+            Respond($"option_name: {Format(config.OptionName)}");
+BOOL_OPTION*/
         }
 
         // Custom formatters
@@ -107,6 +113,10 @@ namespace TorchPlugin
 
                 case "ai_crash":
                     Config.AiCrash = parsedFlag;
+                    break;
+
+                case "serialize":
+                    Config.Serialize = parsedFlag;
                     break;
 
                 /*BOOL_OPTION

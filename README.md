@@ -55,10 +55,12 @@ these patches are expected to be removed anyway, so I did not bother using Torch
 - ransomthetoaster
 
 ### Developers
+- Dude
 - zznty
 
 ### Testers
 - Dorimanx
+- Dude
 - zznty
 
 ## Technical details
@@ -72,8 +74,8 @@ Log:
 ArithmeticException: Function does not accept floating point Not-a-Number values
 ```
 
-[Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values)
-[RCA and Repro](https://github.com/viktor-ferenczi/LookAtNanRepro)
+- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values)
+- [RCA and Repro](https://github.com/viktor-ferenczi/LookAtNanRepro)
 
 ### Crash on docking/undocking grids with offensive AI blocks
 
@@ -87,4 +89,18 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 
 Reported, root caused and patched by `zznty`. Thanks!
 
-[Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)
+- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)
+
+### Failing to save world due to NullRef error on modded blocks
+
+Config: `Serialize`
+
+Log:
+```
+Initializer: System.NullReferenceException: Object reference not set to an instance of an object. 
+   at VRage.Game.Components.MyComponentBase.Serialize(Boolean copy) at VRage.Game.Components.MyComponentContainer.Serialize(Boolean copy) 
+```
+
+Reported, root caused and patched by `Dude`. Thanks!
+
+- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27952-servers-crash-on-player-join-1-202)

@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logging\PluginLogger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\AICrash\MyOffensiveWithWeaponsCombatComponentPatch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\PatchHelpers.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Patches\Serialize\MyComponentBasePatch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\Voxel\MyPlanetPatch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Patches\TurretNan\MyTurretControlBlockPatch.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Plugin\Common.cs" />
@@ -41,5 +42,7 @@
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)Patches\AICrash\OnBeforeRemovedFromContainer.original.il" />
     <Content Include="$(MSBuildThisFileDirectory)Patches\AICrash\OnBeforeRemovedFromContainer.patched.il" />
+    <Content Include="$(MSBuildThisFileDirectory)Patches\Serialize\Serialize.original.il" />
+    <Content Include="$(MSBuildThisFileDirectory)Patches\Serialize\Serialize.patched.il" />
   </ItemGroup>
 </Project>

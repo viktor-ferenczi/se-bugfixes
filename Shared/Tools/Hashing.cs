@@ -40,6 +40,12 @@ namespace Shared.Tools
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static string HashInstructionsHex(this IEnumerable<CodeInstruction> instructions)
+        {
+            return instructions.HashInstructions().CombineHashCodes().ToString("x8");
+        }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int CombineHashCodes(this IEnumerable<int> hashCodes)
         {
             // https://stackoverflow.com/questions/1646807/quick-and-simple-hash-code-combinations

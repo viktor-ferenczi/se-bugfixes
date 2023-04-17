@@ -15,10 +15,14 @@ namespace Shared.Config
         
         // Fixes crash in AI (Automaton) blocks (requires restart)
         bool AiCrash { get; set; }
-        /*BOOL_OPTION
 
+        // Fixes NullRef exception on saving world (requires restart)
+        bool Serialize { get; set; }
+        
+        /*BOOL_OPTION
         // Option tooltip
         bool OptionName { get; set; }
+        
         BOOL_OPTION*/
     }
 }
