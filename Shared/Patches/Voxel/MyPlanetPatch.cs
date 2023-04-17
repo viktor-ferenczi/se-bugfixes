@@ -39,6 +39,9 @@ namespace Shared.Patches.Voxel
         [HarmonyPatch("GeneratePhysicalShapeForBox")]
         private static bool GeneratePhysicalShapeForBox(MyPlanet __instance, ref Vector3I increment, ref BoundingBoxD shapeBox)
         {
+            if (!enabled)
+                return true;
+            
             var clustersIntersection = (List<BoundingBoxD>)ClustersIntersectionField.GetValue(__instance);
             if (clustersIntersection.Count >= 10000)
             {
@@ -65,6 +68,9 @@ namespace Shared.Patches.Voxel
         [HarmonyPatch("CreateVoxelPhysics")]
         private static bool CreateVoxelPhysicsPrefix(MyPlanet __instance, ref Vector3I increment, ref Vector3I_RangeIterator it)
         {
+            if (!enabled)
+                return true;
+            
             var fixedIncrement = new Vector3I(1024, 1024, 1024);
             if (increment != fixedIncrement)
             {
