@@ -18,14 +18,14 @@ namespace TorchPlugin
         private void RespondWithHelp()
         {
             Respond("Bugfixes commands:");
-            Respond("  !pfi help");
-            Respond("  !pfi info");
+            Respond("  !bug help");
+            Respond("  !bug info");
             Respond("    Prints the current configuration settings.");
-            Respond("  !pfi enable");
+            Respond("  !bug enable");
             Respond("    Enables the plugin");
-            Respond("  !pfi disable");
+            Respond("  !bug disable");
             Respond("    Disables the plugin");
-            Respond("  !pfi fix <name> <value>");
+            Respond("  !bug fix <name> <value>");
             Respond("    Enables or disables a specific fix");
             RespondWithListOfFixes();
             Respond("Valid bool values:");
@@ -63,7 +63,7 @@ BOOL_OPTION*/
         private static string Format(bool value) => value ? "Yes" : "No";
 
         // ReSharper disable once UnusedMember.Global
-        [Command("bfi help", "Bugfixes: Prints help on usage")]
+        [Command("bug help", "Bugfixes: Prints help on usage")]
         [Permission(MyPromoteLevel.Admin)]
         public void Help()
         {
@@ -71,7 +71,7 @@ BOOL_OPTION*/
         }
 
         // ReSharper disable once UnusedMember.Global
-        [Command("bfi info", "Bugfixes: Prints the current settings")]
+        [Command("bug info", "Bugfixes: Prints the current settings")]
         [Permission(MyPromoteLevel.None)]
         public void Info()
         {
@@ -79,7 +79,7 @@ BOOL_OPTION*/
         }
 
         // ReSharper disable once UnusedMember.Global
-        [Command("bfi enable", "Bugfixes: Enables the plugin")]
+        [Command("bug enable", "Bugfixes: Enables the plugin")]
         [Permission(MyPromoteLevel.Admin)]
         public void Enable()
         {
@@ -88,7 +88,7 @@ BOOL_OPTION*/
         }
 
         // ReSharper disable once UnusedMember.Global
-        [Command("bfi disable", "Bugfixes: Disables the plugin")]
+        [Command("bug disable", "Bugfixes: Disables the plugin")]
         [Permission(MyPromoteLevel.Admin)]
         public void Disable()
         {
@@ -97,7 +97,7 @@ BOOL_OPTION*/
         }
 
         // ReSharper disable once UnusedMember.Global
-        [Command("bfi fix", "Bugfixes: Enables or disables a specific fix")]
+        [Command("bug fix", "Bugfixes: Enables or disables a specific fix")]
         [Permission(MyPromoteLevel.Admin)]
         public void Fix(string name, string flag)
         {
