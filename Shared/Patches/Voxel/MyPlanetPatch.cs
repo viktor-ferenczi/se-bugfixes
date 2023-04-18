@@ -53,7 +53,7 @@ namespace Shared.Patches.Voxel
                 return true;
 
             var size = box.Size;
-            const double limit = 1_000_000;
+            const double limit = 4_000_000;  // Allow up to 4000km planets
             if (size.X > limit || size.Y > limit || size.Y > limit)
             {
                 UniqueWarning($"UpdatePlanetPhysics: Too large box: size = {box}; WorldAABB = {__instance.PositionComp.WorldAABB}; planet: {__instance.DebugNameNoId()}");
