@@ -45,7 +45,7 @@ BOOL_OPTION*/
             set => SetValue(ref aiCrash, value);
         }
         
-        [Display(Order = 5, GroupName = "Fixes", Name = "Warn about OOM in MyPlanet", Description = "Early warning about OOM crash in MyPlanet (requires restart)")]
+        [Display(Order = 5, GroupName = "Fixes", Name = "Prevent OOM in MyPlanet", Description = "Prevent OOM crash in MyPlanet (requires restart)")]
         public bool VoxelOom
         {
             get => voxelOom;

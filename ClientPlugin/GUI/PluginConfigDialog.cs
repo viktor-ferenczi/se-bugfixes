@@ -68,7 +68,7 @@ namespace ClientPlugin.GUI
             CreateCheckbox(out enabledLabel, out enabledCheckbox, config.Enabled, value => config.Enabled = value, "Enabled", "Enables the plugin");
             CreateCheckbox(out turretNanLabel, out turretNanCheckbox, config.TurretNan, value => config.TurretNan = value, "Fix NaN crash in TurretControlBlock", "Fixes crash due to NaN value in TurretControlBlock");
             CreateCheckbox(out aiCrashLabel, out aiCrashCheckbox, config.AiCrash, value => config.AiCrash = value, "Fix crash in AI blocks", "Fixes crash in AI (Automaton) blocks (requires restart)");
-            CreateCheckbox(out voxelOomLabel, out voxelOomCheckbox, config.VoxelOom, value => config.VoxelOom = value, "Warn about OOM in MyPlanet", "Early warning about OOM crash in MyPlanet (requires restart)");
+            CreateCheckbox(out voxelOomLabel, out voxelOomCheckbox, config.VoxelOom, value => config.VoxelOom = value, "Prevent OOM in MyPlanet", "Prevent OOM crash in MyPlanet (requires restart)");
 /*BOOL_OPTION
             CreateCheckbox(out optionNameLabel, out optionNameCheckbox, config.OptionName, value => config.OptionName = value, "Option label", "Option tooltip");
 BOOL_OPTION*/

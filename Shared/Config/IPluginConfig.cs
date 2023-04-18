@@ -16,7 +16,7 @@ namespace Shared.Config
         // Fixes crash in AI (Automaton) blocks (requires restart)
         bool AiCrash { get; set; }
 
-        // Early warning about OOM crash in MyPlanet (requires restart)
+        // Prevent OOM crash in MyPlanet (requires restart)
         bool VoxelOom { get; set; }
         
         /*BOOL_OPTION

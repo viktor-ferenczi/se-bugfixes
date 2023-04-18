@@ -135,7 +135,7 @@ def main():
     # https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values
     # generate_bool_option('AiCrash', 'ai_crash', 'Fix crash in AI blocks', 'Fixes crash in AI (Automaton) blocks (requires restart)')
 
-    # generate_bool_option('VoxelOom', 'voxel_oom', 'Warn about OOM in MyPlanet', 'Early warning about OOM crash in MyPlanet (requires restart)')
+    # generate_bool_option('VoxelOom', 'voxel_oom', 'Prevent OOM in MyPlanet', 'Prevent OOM crash in MyPlanet (requires restart)')
 
 if __name__ == '__main__':
     main()
