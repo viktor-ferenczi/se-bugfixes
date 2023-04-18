@@ -25,9 +25,6 @@ namespace ClientPlugin.GUI
         private MyGuiControlLabel aiCrashLabel;
         private MyGuiControlCheckbox aiCrashCheckbox;
 
-        private MyGuiControlLabel serializeLabel;
-        private MyGuiControlCheckbox serializeCheckbox;
-
         private MyGuiControlLabel voxelOomLabel;
         private MyGuiControlCheckbox voxelOomCheckbox;
 
@@ -71,8 +68,7 @@ namespace ClientPlugin.GUI
             CreateCheckbox(out enabledLabel, out enabledCheckbox, config.Enabled, value => config.Enabled = value, "Enabled", "Enables the plugin");
             CreateCheckbox(out turretNanLabel, out turretNanCheckbox, config.TurretNan, value => config.TurretNan = value, "Fix NaN crash in TurretControlBlock", "Fixes crash due to NaN value in TurretControlBlock");
             CreateCheckbox(out aiCrashLabel, out aiCrashCheckbox, config.AiCrash, value => config.AiCrash = value, "Fix crash in AI blocks", "Fixes crash in AI (Automaton) blocks (requires restart)");
-            CreateCheckbox(out serializeLabel, out serializeCheckbox, config.Serialize, value => config.Serialize = value, "Fix NullRef on saving world", "Fixes NullRef exception on saving world (requires restart)");
-            CreateCheckbox(out voxelOomLabel, out voxelOomCheckbox, config.VoxelOom, value => config.VoxelOom = value, "Warn about OOM in MyPlanet", "Early warning about OOM crash in MyPlanet (requires restart)");
+            CreateCheckbox(out voxelOomLabel, out voxelOomCheckbox, config.VoxelOom, value => config.VoxelOom = value, "Prevent OOM in MyPlanet", "Prevent OOM crash in MyPlanet (requires restart)");
 /*BOOL_OPTION
             CreateCheckbox(out optionNameLabel, out optionNameCheckbox, config.OptionName, value => config.OptionName = value, "Option label", "Option tooltip");
 BOOL_OPTION*/
@@ -118,7 +114,6 @@ BOOL_OPTION*/
 
             turretNanCheckbox.Enabled = enabled;
             aiCrashCheckbox.Enabled = enabled;
-            serializeCheckbox.Enabled = enabled;
             voxelOomCheckbox.Enabled = enabled;
 /*BOOL_OPTION
             optionNameCheckbox.Enabled = enabled;
@@ -130,7 +125,7 @@ BOOL_OPTION*/
             var size = Size ?? Vector2.One;
             layoutTable = new MyLayoutTable(this, new Vector2(-0.3f * size.X, -0.375f * size.Y), new Vector2(0.6f * size.X, 0.8f * size.Y));
             layoutTable.SetColumnWidths(400f, 100f);
-            layoutTable.SetRowHeights(80f, 50f, 50f, 50f, 50f, 50f, /*BOOL_OPTION 50f,BOOL_OPTION*/ 220f, 50f);
+            layoutTable.SetRowHeights(80f, 50f, 50f, 50f, 50f, /*BOOL_OPTION 50f,BOOL_OPTION*/ 220f, 50f);
 
             var row = 0;
 
@@ -144,10 +139,6 @@ BOOL_OPTION*/
 
             layoutTable.Add(aiCrashLabel, MyAlignH.Left, MyAlignV.Center, row, 0);
             layoutTable.Add(aiCrashCheckbox, MyAlignH.Left, MyAlignV.Center, row, 1);
-            row++;
-
-            layoutTable.Add(serializeLabel, MyAlignH.Left, MyAlignV.Center, row, 0);
-            layoutTable.Add(serializeCheckbox, MyAlignH.Left, MyAlignV.Center, row, 1);
             row++;
 
             layoutTable.Add(voxelOomLabel, MyAlignH.Left, MyAlignV.Center, row, 0);

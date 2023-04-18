@@ -91,21 +91,6 @@ Reported, root caused and patched by `zznty`. Thanks!
 
 - [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)
 
-### Failing to save world due to NullRef error on modded blocks
-
-Config: `Serialize`
-
-Log:
-```
-Initializer: System.NullReferenceException: Object reference not set to an instance of an object. 
-   at VRage.Game.Components.MyComponentBase.Serialize(Boolean copy) at VRage.Game.Components.MyComponentContainer.Serialize(Boolean copy) 
-```
-
-Reported, root caused and patched by `Dude`. Thanks!
-
-- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27952-servers-crash-on-player-join-1-202)
-- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)
-
 ### Crash on OOM due to too many physics shapes
 
 Config: `VoxelOOM`
@@ -127,3 +112,22 @@ CreateVoxelMap-OOM-$47995853-${Min:{X:-5.637376E+08 Y:-1.313395E+09 Z:-1.435155E
 ```
 
 - TBD: Support ticket
+
+## Fixed by Keen
+
+### Failing to save world due to NullRef error on modded blocks
+
+Fixed in: 1.202.067
+
+Config: `Serialize`
+
+Log:
+```
+Initializer: System.NullReferenceException: Object reference not set to an instance of an object. 
+   at VRage.Game.Components.MyComponentBase.Serialize(Boolean copy) at VRage.Game.Components.MyComponentContainer.Serialize(Boolean copy) 
+```
+
+Reported, root caused and patched by `Dude`. Thanks!
+
+- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/27952-servers-crash-on-player-join-1-202)
+- [Support ticket](https://support.keenswh.com/spaceengineers/pc/topic/28104-nullreferenceexception-in-myoffensivewithweaponscombatcomponent)
