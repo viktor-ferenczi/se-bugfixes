@@ -33,7 +33,6 @@ namespace Shared.Config
         private bool detectCodeChanges = true;
         private bool turretNan = true;
         private bool aiCrash = true;
-        private bool serialize = true;
         private bool voxelOom = true;
 /*BOOL_OPTION
         private bool optionName = true;
@@ -63,12 +62,6 @@ BOOL_OPTION*/
             set => SetValue(ref aiCrash, value);
         }
 
-        public bool Serialize
-        {
-            get => serialize;
-            set => SetValue(ref serialize, value);
-        }
-        
         public bool VoxelOom
         {
             get => voxelOom;

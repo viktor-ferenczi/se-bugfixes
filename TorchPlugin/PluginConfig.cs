@@ -12,7 +12,6 @@ namespace TorchPlugin
         private bool detectCodeChanges = true;
         private bool turretNan = true;
         private bool aiCrash = true;
-        private bool serialize = true;
         private bool voxelOom = true;
 /*BOOL_OPTION
         private bool optionName = true;
@@ -46,14 +45,7 @@ BOOL_OPTION*/
             set => SetValue(ref aiCrash, value);
         }
         
-        [Display(Order = 5, GroupName = "Fixes", Name = "Fix NullRef on saving world", Description = "Fixes NullRef exception on saving world (requires restart)")]
-        public bool Serialize
-        {
-            get => serialize;
-            set => SetValue(ref serialize, value);
-        }
-        
-        [Display(Order = 6, GroupName = "Fixes", Name = "Warn about OOM in MyPlanet", Description = "Early warning about OOM crash in MyPlanet (requires restart)")]
+        [Display(Order = 5, GroupName = "Fixes", Name = "Warn about OOM in MyPlanet", Description = "Early warning about OOM crash in MyPlanet (requires restart)")]
         public bool VoxelOom
         {
             get => voxelOom;
@@ -61,7 +53,7 @@ BOOL_OPTION*/
         }
         
         /*BOOL_OPTION
-        [Display(Order = 7, GroupName = "Fixes", Name = "Option label", Description = "Option tooltip")]
+        [Display(Order = 6, GroupName = "Fixes", Name = "Option label", Description = "Option tooltip")]
         public bool OptionName
         {
             get => optionName;

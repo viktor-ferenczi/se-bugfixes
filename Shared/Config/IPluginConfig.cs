@@ -16,9 +16,6 @@ namespace Shared.Config
         // Fixes crash in AI (Automaton) blocks (requires restart)
         bool AiCrash { get; set; }
 
-        // Fixes NullRef exception on saving world (requires restart)
-        bool Serialize { get; set; }
-        
         // Early warning about OOM crash in MyPlanet (requires restart)
         bool VoxelOom { get; set; }
         
