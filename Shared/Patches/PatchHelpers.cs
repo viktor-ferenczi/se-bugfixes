@@ -68,5 +68,10 @@ namespace Shared.Patches
             MyOffensiveWithWeaponsCombatComponentPatch.Configure();
             MyPlanetPatch.Configure();
         }
+
+        public static void Update(long tick)
+        {
+            MyPlanetPatch.Update(tick);            
+        }
     }
 }

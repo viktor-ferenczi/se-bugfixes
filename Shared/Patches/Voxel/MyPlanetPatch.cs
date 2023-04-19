@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Threading;
 using HarmonyLib;
 using Sandbox.Game.Entities;
 using Shared.Config;
@@ -34,14 +35,23 @@ namespace Shared.Patches.Voxel
         private static readonly FieldInfo ClustersIntersectionField = AccessTools.DeclaredField(typeof(MyPlanet), "m_clustersIntersection");
         private static readonly FieldInfo StartField = AccessTools.DeclaredField(typeof(Vector3I_RangeIterator), "m_start");
         private static readonly FieldInfo EndField = AccessTools.DeclaredField(typeof(Vector3I_RangeIterator), "m_end");
-        private static string lastLogMessage;
+        private static int budget = 100;
 
-        private static void UniqueWarning(string text)
+        public static void Update(long tick)
         {
-            if (text == lastLogMessage)
+            if (tick % 60 == 0)
+            {
+                Interlocked.Increment(ref budget);
+            }
+        }
+
+        private static void ThrottledWarning(string text)
+        {
+            if (budget <= 0)
                 return;
 
-            lastLogMessage = text;
+            Interlocked.Decrement(ref budget);
+            
             Log.Warning(text);
         }
 
@@ -56,7 +66,7 @@ namespace Shared.Patches.Voxel
             const double limit = 4_000_000;  // Allow up to 4000km planets
             if (size.X > limit || size.Y > limit || size.Y > limit)
             {
-                UniqueWarning($"UpdatePlanetPhysics: Too large box: size = {box}; WorldAABB = {__instance.PositionComp.WorldAABB}; planet: {__instance.DebugNameNoId()}");
+                ThrottledWarning($"UpdatePlanetPhysics: Too large box: size = {box}; WorldAABB = {__instance.PositionComp.WorldAABB}; planet: {__instance.DebugNameNoId()}");
                 // Workaround: Shortcut the execution here, so the server does not crash at least
                 return false;
             }
@@ -74,21 +84,21 @@ namespace Shared.Patches.Voxel
             var clustersIntersection = (List<BoundingBoxD>)ClustersIntersectionField.GetValue(__instance);
             if (clustersIntersection.Count >= 10000)
             {
-                UniqueWarning($"GeneratePhysicalShapeForBox: Too many items in m_clustersIntersection: {clustersIntersection.Count}; planet: {__instance.DebugNameNoId()}");
+                ThrottledWarning($"GeneratePhysicalShapeForBox: Too many items in m_clustersIntersection: {clustersIntersection.Count}; planet: {__instance.DebugNameNoId()}");
                 return false;
             }
 
             var fixedIncrement = new Vector3I(1024, 1024, 1024);
             if (increment != fixedIncrement)
             {
-                UniqueWarning($"GeneratePhysicalShapeForBox: Invalid increment: {increment}; planet: {__instance.DebugNameNoId()}");
+                ThrottledWarning($"GeneratePhysicalShapeForBox: Invalid increment: {increment}; planet: {__instance.DebugNameNoId()}");
             }
 
             var size = shapeBox.Size;
             const double limit = 1_000_000;
             if (size.X > limit || size.Y > limit || size.Y > limit)
             {
-                UniqueWarning($"GeneratePhysicalShapeForBox: Too large shapeBox: size = {shapeBox.Max - shapeBox.Min}; shapeBox = {shapeBox}; planet: {__instance.DebugNameNoId()}");
+                ThrottledWarning($"GeneratePhysicalShapeForBox: Too large shapeBox: size = {shapeBox.Max - shapeBox.Min}; shapeBox = {shapeBox}; planet: {__instance.DebugNameNoId()}");
                 // Actual example from Prozon:
                 // Too large shapeBox: {Min:X:-670875314.731042 Y:298284.217203573 Z:-570371416.13524 Max:X:1118183955.68551 Y:1660129266.60366 Z:1268623598.29293}
                 // Workaround: Shortcut the execution here, so the server does not crash at least
@@ -108,7 +118,7 @@ namespace Shared.Patches.Voxel
             var fixedIncrement = new Vector3I(1024, 1024, 1024);
             if (increment != fixedIncrement)
             {
-                UniqueWarning($"CreateVoxelPhysics: Invalid increment: {increment}; planet: {__instance.DebugNameNoId()}");
+                ThrottledWarning($"CreateVoxelPhysics: Invalid increment: {increment}; planet: {__instance.DebugNameNoId()}");
             }
 
             var start = (Vector3I)StartField.GetValue(it);
@@ -117,13 +127,13 @@ namespace Shared.Patches.Voxel
             var outer = inner + new Vector3I(1, 1, 1);
             if (inner.X < 0 || inner.Y < 0 || inner.Z < 0)
             {
-                UniqueWarning($"CreateVoxelPhysics: Negative iterator box size: {inner}; start = {start}; end = {end}; planet: {__instance.DebugNameNoId()}");
+                ThrottledWarning($"CreateVoxelPhysics: Negative iterator box size: {inner}; start = {start}; end = {end}; planet: {__instance.DebugNameNoId()}");
                 return false;
             }
 
             if (inner.X >= 1000 || inner.Y >= 1000 || inner.Z >= 1000 || outer.X * outer.Y * outer.Z >= 50 * 50 * 50)
             {
-                UniqueWarning($"CreateVoxelPhysics: Too large iterator box: size = {inner}; start = {start}; end = {end}; planet: {__instance.DebugNameNoId()}");
+                ThrottledWarning($"CreateVoxelPhysics: Too large iterator box: size = {inner}; start = {start}; end = {end}; planet: {__instance.DebugNameNoId()}");
                 // Actual example from Prozon:
                 // Too large iterator box size: [X:1747127, Y:1620929, Z:1795892]; start = [X:-655135, Y:14, Z:-551420]; end = [X:1091992, Y:1620943, Z:1244472]
                 return false;

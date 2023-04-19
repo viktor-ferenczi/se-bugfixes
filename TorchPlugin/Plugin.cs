@@ -155,7 +155,7 @@ namespace TorchPlugin
 
         private void CustomUpdate()
         {
-            // TODO: Put your update processing here. It is called on every simulation frame!
+            Common.Update(Tick);
         }
     }
 }

@@ -110,7 +110,7 @@ namespace DedicatedPlugin
 
         private void CustomUpdate()
         {
-            // TODO: Put your update code here. It is called on every simulation frame!
+            Common.Update(Tick);
         }
     }
 }
