@@ -19,5 +19,10 @@ namespace Shared.Plugin
             
             PatchHelpers.Configure();
         }
+        
+        public static void Update(long tick)
+        {
+            PatchHelpers.Update(tick);            
+        }
     }
 }
