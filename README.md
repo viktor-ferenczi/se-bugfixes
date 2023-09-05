@@ -1,3 +1,16 @@
+**OBSOLETE**
+
+Inactivated by code changes in game:
+- `MyOffensiveWithWeaponsCombatComponentPatch`
+- `MyPlanetPatch`
+
+[Marked as "Solved" by Keen](https://support.keenswh.com/spaceengineers/pc/topic/27973-arithmeticexception-function-does-not-accept-floating-point-not-a-number-values), supposed to be fixed already:
+- `MyTurretControlBlockPatch`
+
+Therefore this plugin is not needed anymore.
+
+---
+
 # Space Engineers Bugfixes Plugin
 
 **Scroll down for:**
